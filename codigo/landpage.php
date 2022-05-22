@@ -1,5 +1,3 @@
-<?php echo " prueba" ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
