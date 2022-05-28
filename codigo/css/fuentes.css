@@ -1,0 +1,64 @@
+@font-face {
+    font-family: norwester;
+    src: url(/fuentes/norwester.otf) format("truetype");
+}
+
+@font-face {
+    font-family: yellowtail;
+    src: url(/fuentes/yellowtail.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: norwester;
+    src: url(/fuentes/norwester.otf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_bold;
+    src: url(/fuentes/open_sans/OpenSans-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_bold_italic;
+    src: url(/fuentes/open_sans/OpenSans-BoldItalic.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_italic;
+    src: url(/fuentes/open_sans/OpenSans-Italic.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_light;
+    src: url(/fuentes/open_sans/OpenSans-Light.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_light_italic;
+    src: url(/fuentes/open_sans/OpenSans-LightItalic.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_medium;
+    src: url(/fuentes/open_sans/OpenSans-Medium.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_medium_italic;
+    src: url(/fuentes/open_sans/OpenSans-MediumItalic.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_regular;
+    src: url(/fuentes/open_sans/OpenSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_semi_bold;
+    src: url(/fuentes/open_sans/OpenSans-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: open_sans_semi_bold_italic;
+    src: url(/fuentes/open_sans/OpenSans-SemiBoldItalic.ttf) format("truetype");
+}
