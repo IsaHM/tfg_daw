@@ -1,3 +1,9 @@
+/*
+    Lee la longitud del texto a introducir (por ej. "programadores") y la suma uno a uno.
+    Al llegar al final de la sumar, invierte el efecto para restar uno por uno los valores de la misma longitud.
+    Al restar todos los valores, cambia el valor del texto y repite el proceso de forma cíclica.
+*/
+
 var TxtRotate = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -11,6 +17,8 @@ var TxtRotate = function (el, toRotate, period) {
 TxtRotate.prototype.tick = function () {
   var i = this.loopNum % this.toRotate.length;
   var fullTxt = this.toRotate[i];
+  var that = this;
+  var aux = 200 - Math.random() * 100;
 
   if (this.isDeleting) {
     this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -20,29 +28,26 @@ TxtRotate.prototype.tick = function () {
 
   this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
 
-  var that = this;
-  var delta = 200 - Math.random() * 100;
-
   if (this.isDeleting) {
-    delta /= 2;
+    aux /= 2;
   }
 
   if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
+    aux = this.period;
     this.isDeleting = true;
   } else if (this.isDeleting && this.txt === "") {
     this.isDeleting = false;
     this.loopNum++;
-    delta = 500;
+    aux = 500;
   }
 
   setTimeout(function () {
     that.tick();
-  }, delta);
+  }, aux);
 };
 
 window.onload = function () {
-  var elements = document.getElementsByClassName("txt-rotate");
+  var elements = document.getElementsByClassName("txt_rotar");
   for (var i = 0; i < elements.length; i++) {
     var toRotate = elements[i].getAttribute("data-rotate");
     var period = elements[i].getAttribute("data-period");
@@ -52,6 +57,6 @@ window.onload = function () {
   }
   var css = document.createElement("style");
   css.type = "text/css";
-  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  css.innerHTML = ".txt_rotar > .wrap { border-right: 0.08em solid #666 }";
   document.body.appendChild(css);
 };

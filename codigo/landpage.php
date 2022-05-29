@@ -12,6 +12,7 @@
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
+    <script src="js/cabecera.js"></script>
 
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png">
     <title>Cursor Academy</title>
@@ -19,29 +20,31 @@
 
 <body>
     <header>
-        <div class="menu">
-            <img src="/imgs/500x500_sin_fondo.png" alt="Logotipo Cursor Academy">
-            <ul>
-                <li><a href="#">el proyecto</a></li>
-                <li><a href="#">contacto</a></li>
-                <li><a href="#">productos</a></li>
-                <li><a href="#">prueba de conocimiento</a></li>
-                <li><a href="#">panel administrativo</a></li>
-                <li><a href="#">login</a></li>
-            </ul>
-        </div>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top navbar-default" id="mainNav">
+            <div class="menu">
+                <a href="landpage.php"><img src="/imgs/500x500_sin_fondo.png" alt="Logotipo Cursor Academy"></a>
+                <ul>
+                    <li><a href="#">el proyecto</a></li>
+                    <li><a href="#">contacto</a></li>
+                    <li><a href="#">productos</a></li>
+                    <li><a href="#">prueba de conocimiento</a></li>
+                    <li><a href="#">panel administrativo</a></li>
+                    <li><a href="#">login</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <div class="portada">
         <h1 class="texto_portada"><span>cursor</span> academy</h1>
-        <h2>una plataforma para
-            <span
-                class="txt-rotate"
-                data-period="2000"
-                data-rotate='["diseñadores.","programadores.","todo el mundo."]'></span>
-        </h2>
+        <!-- Efecto portada JS -->
+        <h2>una plataforma para<span class="txt_rotar" data-period="2000" data-rotate='[" diseñadores."," programadores."," todo el mundo."]'></span></h2>
     </div>
 
+    <div class="cuerpo_fondo">
+        <div class="cuerpo_uno">
 
+        </div>
+    </div>
 </body>
 </html>
