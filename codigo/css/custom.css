@@ -1,5 +1,4 @@
 /* --- GENERAL --- */
-
 * {
     margin: 0;
     outline: none;
@@ -27,6 +26,11 @@
 }
 
 /* header */
+nav {
+    background-color: #0A475C; 
+    box-shadow: 600px -16px black;
+}
+
 .menu {
     width: 100%;
     float: inline-end;

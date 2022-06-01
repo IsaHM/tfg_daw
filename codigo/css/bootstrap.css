@@ -11128,7 +11128,7 @@ hr.divider-light {
 
 #mainNav {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: #0A475C;
     transition: background-color 0.2s ease;
 }
 
@@ -11157,7 +11157,6 @@ hr.divider-light {
 
 @media (min-width: 992px) {
     #mainNav {
-        box-shadow: none;
         background-color: #0A475C;
     }
     #mainNav .navbar-brand {
@@ -11178,7 +11177,7 @@ hr.divider-light {
     }
     #mainNav.navbar-shrink {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        background-color: #fff;
+        background-color: #0A475C;
     }
     #mainNav.navbar-shrink .navbar-brand {
         color: #212529;
