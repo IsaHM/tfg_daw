@@ -1,14 +1,16 @@
 /* --- GENERAL --- */
+
+/* margin: top dcha bot izq*/
 * {
     margin: 0;
     outline: none;
-    scrollbar-color: #B4AEE8 #e0e0e0;
+    scrollbar-color: #b4aee8 #e0e0e0;
     scrollbar-gutter: stable;
     font-family: open_sans_regular;
 }
 
 .portada h1 {
-    color: #37E2D5;
+    color: #37e2d5;
     font-family: norwester;
     width: 100%;
     text-align: center;
@@ -27,7 +29,7 @@
 
 /* header */
 nav {
-    background-color: #0A475C; 
+    background-color: #0a475c;
     box-shadow: 600px -16px black;
 }
 
@@ -44,7 +46,7 @@ nav {
     margin-bottom: 1%;
     padding-top: 2%;
 }
-  
+
 .menu ul {
     width: 80%;
     justify-content: flex-end;
@@ -53,7 +55,7 @@ nav {
     display: table-cell;
     text-align: right;
 }
-  
+
 .menu ul li {
     list-style-type: none;
     display: inline-block;
@@ -64,20 +66,32 @@ nav {
     font-family: norwester;
     text-decoration: none;
     font-size: 1.15em;
-    color: #C70A80;
+    color: #c70a80;
+    transition: all .5s;
+}
+
+.menu ul li a:hover {
+    font-family: norwester;
+    text-decoration: none;
+    font-size: 1.15em;
+    color: #FBCB0A;
 }
 
 .log {
-    border: 2.5px solid #C70A80;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    border: 2.5px solid #c70a80;
+    padding: 0.2em 0.75em 0.2em 0.75em;
+}
+
+.log:hover {
+    background: #c70a80;
+    color: white !important;
 }
 
 /* footer */
 footer {
-    background-color: #0A475C;
-    color: #C70A80;
-    font-size: 0.9em;
+    background-color: #0a475c;
+    color: #c70a80;
+    font-size: 0.8em;
 }
 
 .pie_titulo {
@@ -89,19 +103,20 @@ footer {
 .pie_texto {
     margin-left: 1em;
     margin-right: 5em;
+    font-size: 1.2em;
     text-align: justify;
     text-justify: inter-word;
 }
 
 footer a {
-    color: #37E2D5;
+    color: #37e2d5;
     font-size: 1.1em;
     opacity: 0.6;
     text-decoration: none;
 }
 
 footer a:hover {
-    color: #37E2D5;
+    color: #37e2d5;
     opacity: 1;
 }
 
@@ -117,15 +132,13 @@ footer a:hover {
     display: inline-block;
 }
 
-.pie_pagina .row .copyright{
+.pie_pagina .row .copyright {
     margin-bottom: 1%;
 }
 
 .copyright {
     text-align: center;
 }
-
-
 
 /* --- LANDPAGE --- */
 
@@ -138,15 +151,108 @@ footer a:hover {
     background-size: cover;
 }
 
+.portada h2 span {
+    font-family: open_sans_medium;
+}
+
 /* cuerpo del landpage */
 .cuerpo_fondo {
-    background-color: #FFE3FE;
+    background-color: #ffe3fe;
 }
 
 .cuerpo_el_proyecto {
     height: 42em;
     width: 80%;
     margin: auto;
-    background-color: #0A475C;
-    opacity: 0.25;
+}
+
+/* contacto */
+.cuerpo_contacto {
+    margin: 0 5% 0 5%;
+    padding-top: 2em;
+    padding-bottom: 3em;
+    display: flex;
+}
+
+.formulario_contacto {
+    width: 24em;
+    height: 26.5em;
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #0a475c;
+    margin: auto; 
+    padding: 20px 30px; 
+    box-sizing: border-box;
+    position: relative;
+}
+
+.contacto_titulo {
+    font-family: norwester;
+    margin-top: 0.1em;
+    padding-bottom: 0.25em;
+    width: 180px;
+    color: #0a475c;    
+}
+
+.formulario_contacto p input {
+    width: 100%;
+    padding: 0.6em;
+    box-sizing: border-box;
+    border: 0;
+    background: none;
+    transition: all .3s;
+    border-bottom: 1.5px solid #0a475c;
+}
+
+.formulario_contacto p input:focus {
+    border-bottom: 1.5px solid #FBCB0A;
+}
+
+.formulario_contacto p:before {
+    content: attr(type);
+    display: block;
+    margin-top: 2.2em;
+    font-size: 14px;
+}
+
+.formulario_contacto button {
+    float: right;
+    padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
+    margin: 8px 0 0;
+    border: 2px solid #78788c;
+    background: 0;
+    color: #5a5a6e;
+    cursor: pointer;
+    transition: all .3s
+}
+
+.formulario_contacto button:hover {
+    background: #0a475c;
+    border: 2px solid #0a475c;
+    color: white;
+}
+
+.tlf_email {
+    position: absolute;
+    bottom: -1em;
+    right: -1.5em;
+    padding: 0.5em 1.5em 0.5em 1em;
+    background-color: #590696;
+    color: white;
+    width: auto;
+    border-radius: 6px;
+    font-size: 0.9em;
+    box-shadow: 10px 10px 40px -14px #590696;
+}
+
+.fa {
+    padding-right: 0.75em;
+}
+
+.mapa {
+    display: flex;
+    margin: auto;
+    width: 750px;
+    height: 450px;
+    box-shadow: 0 0 40px -10px #0a475c;
 }

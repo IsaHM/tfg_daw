@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css"> 
     <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
@@ -38,7 +39,7 @@
 
     <div class="portada">
         <h1 class="texto_portada">cursor academy</h1>
-        <!-- Efecto portada JS -->
+        <!-- Texto con efecto portada.js -->
         <h2>una plataforma para<span class="txt_rotar" data-period="2000" data-rotate='[" diseñadores."," programadores."," todo el mundo."]'></span></h2>
     </div>
 
@@ -47,7 +48,18 @@
 
         </div>
         <div class="cuerpo_contacto" id="contacto">
-
+            <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.522412591126!2d-3.6933637000000004!3d40.41942969999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422884b69894d3%3A0x42597193d8bd3e47!2sPlaza%20Cibeles%2C%2028014%20Madrid!5e0!3m2!1ses!2ses!4v1654164882894!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <form class="formulario_contacto">
+                    <h2 class="contacto_titulo">contacto</h2>
+                    <p><input placeholder="Nombre"></input></p>
+                    <p><input placeholder="Email de contacto"></input></p>
+                    <p><input placeholder="Escribe aquí tu mensaje"></input></p>
+                    <button>Enviar</button>
+                <div class="tlf_email">
+                    <span class="fa fa-phone"></span>601 23 45 67<br>
+                    <span class="fa fa-envelope-o"></span>contacto@cursoracademy.com
+                </div>
+            </form>
         </div>
     </div>
     <!-- Pie de página -->
