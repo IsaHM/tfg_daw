@@ -4405,7 +4405,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem;
     line-height: 1;
     background-color: transparent;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 0.25rem;
     transition: box-shadow 0.15s ease-in-out;
 }
@@ -4802,7 +4802,7 @@ fieldset:disabled .btn {
 
 .navbar-light .navbar-toggler {
     color: rgba(0, 0, 0, 0.55);
-    border-color: rgba(0, 0, 0, 0.1);
+    border: none;
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -4848,7 +4848,7 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-toggler {
     color: rgba(255, 255, 255, 0.55);
-    border-color: rgba(255, 255, 255, 0.1);
+    border: none;
 }
 
 .navbar-dark .navbar-toggler-icon {

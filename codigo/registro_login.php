@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/custom.css"> 
     <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="css/custom.css"> 
+    <link rel="stylesheet" href="css/login_registro_error.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- JS -->
@@ -35,39 +36,35 @@
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="registro_login.php">login</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="#">login</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="#">logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    <div class="portada">
-        <h1 class="texto_portada">cursor academy</h1>
-        <!-- Texto con efecto portada.js -->
-        <h2>una plataforma para<span class="txt_rotar" data-period="2000" data-rotate='[" diseñadores."," programadores."," todo el mundo."]'></span></h2>
-    </div>
-
-    <div class="cuerpo_fondo">
-        <div class="cuerpo_el_proyecto" id="el_proyecto">
-
+    <div class="cuerpo_registro_login" style="padding-top:200px;">
+        <div class="registro">
+        <h2>nuevo usuario</h2>
+            <form class="form_registro" action="servidor.php" method="post">
+                <input class="input_registro" type="hidden" name="option" value="registro">
+                <input class="input_registro" type="text" name="email" placeholder="Correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60" required>
+                <input class="input_registro" type="text" name="nombre" placeholder="Nombre de usuario" pattern="[a-zA-Z0-9-_]+" minlength="2" maxlength="30" required>
+                <input class="input_registro" type="password" name="pass" placeholder="Contraseña (mínimo 8 carácteres)" minlength="8" maxlength="60" required>
+                <input class="submit_nuevo_usuario" type="submit" value="Registro">
+            </form><br>
         </div>
-        <div class="cuerpo_contacto" id="contacto">
-            <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.522412591126!2d-3.6933637000000004!3d40.41942969999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422884b69894d3%3A0x42597193d8bd3e47!2sPlaza%20Cibeles%2C%2028014%20Madrid!5e0!3m2!1ses!2ses!4v1654164882894!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <form class="formulario_contacto" action="mailto:isabelhmoyo@gmail.com" enctype=”multipart/form-data”>
-                    <h2 class="contacto_titulo">contacto</h2>
-                    <p><input placeholder="Nombre"></input></p>
-                    <p><input placeholder="Email de contacto"></input></p>
-                    <p><input placeholder="Escribe aquí tu mensaje"></input></p>
-                    <button>Enviar</button>
-                <div class="tlf_email">
-                    <span class="fa fa-phone"></span>601 23 45 67<br>
-                    <span class="fa fa-envelope-o"></span>contacto@cursoracademy.com
-                </div>
+        <div class="login">
+        <h2>usuario registrado</h2>
+            <form class="inicio_sesion" action="servidor.php" method="post">
+                <input class="input_login" type="hidden" name="option" value="inicio_sesion">
+                <input class="input_login" type="text" name="nombre" placeholder="Nombre de usuario" maxlength="30" required>
+                <input class="input_login" type="password" name="pass" placeholder="Contraseña" maxlength="60" required>
+                <input class="submit_usuario_registrado" type="submit" value="Iniciar sesión">
             </form>
         </div>
     </div>
+
     <!-- Pie de página -->
     <footer>
         <div class="pie_pagina">

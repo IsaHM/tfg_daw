@@ -33,58 +33,38 @@ nav {
     box-shadow: 600px -16px black;
 }
 
-.menu {
+header {
     width: 100%;
     float: inline-end;
     display: table;
     overflow: hidden;
 }
 
-.menu img {
-    width: 22%;
-    margin-left: 2%;
-    margin-bottom: 1%;
-    padding-top: 2%;
-}
-
-.menu ul {
-    width: 80%;
-    justify-content: flex-end;
-    display: flex;
-    vertical-align: middle;
-    display: table-cell;
-    text-align: right;
-}
-
-.menu ul li {
-    list-style-type: none;
-    display: inline-block;
-    margin-right: 1.6%;
-}
-
-.menu ul li a {
+.nav_enlace {
     font-family: norwester;
-    text-decoration: none;
-    font-size: 1.15em;
+    font-size: 1.3em;
     color: #c70a80;
-    transition: all .5s;
+    opacity: 1;
+    margin-left: 1em;
+    text-decoration: none;
 }
 
-.menu ul li a:hover {
-    font-family: norwester;
-    text-decoration: none;
-    font-size: 1.15em;
-    color: #FBCB0A;
+.nav_enlace:hover {
+    color: #c70a80;
+    border-bottom: 0.1em solid #c70a80;
 }
 
 .log {
-    border: 2.5px solid #c70a80;
-    padding: 0.2em 0.75em 0.2em 0.75em;
+    color: #37E2D5;
 }
 
 .log:hover {
-    background: #c70a80;
-    color: white !important;
+    color: #FBCB0A;
+    opacity: 1;
+}
+
+.navbar-toggler {
+    border: none !important;
 }
 
 /* footer */
@@ -157,7 +137,7 @@ footer a:hover {
 
 /* cuerpo del landpage */
 .cuerpo_fondo {
-    background-color: #ffe3fe;
+    background-color: #e5e5e5;
 }
 
 .cuerpo_el_proyecto {
@@ -200,7 +180,7 @@ footer a:hover {
     box-sizing: border-box;
     border: 0;
     background: none;
-    transition: all .3s;
+    transition: all .4s;
     border-bottom: 1.5px solid #0a475c;
 }
 
@@ -227,6 +207,14 @@ footer a:hover {
 }
 
 .formulario_contacto button:hover {
+    opacity: 1;
+    background: #0a475c;
+    border: 2px solid #0a475c;
+    color: white;
+}
+
+.formulario_contacto button:active {
+    opacity: 0.8;
     background: #0a475c;
     border: 2px solid #0a475c;
     color: white;

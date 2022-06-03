@@ -1,0 +1,59 @@
+.cuerpo_registro_login {
+    margin: auto;
+    width: auto;
+    height: 45em;
+    background: url(/imgs/wp_login.jpg);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cuerpo_registro_login div {
+    width: 40%;
+    box-shadow: 10px 10px 40px -14px #0a475c;
+    border-radius: 8px;
+    margin: 0 3em 5em 3em;
+    padding: 1em 3em 1em 3em;
+    background-color: white;
+}
+
+.cuerpo_registro_login h2 {
+    font-size: 2.5em;
+    margin-top: 0.2em;
+    text-align: center;
+    color: #590696;
+    font-family: norwester;
+    margin-bottom: 0.6em;
+}
+
+.input_registro, .input_login {
+    width: 100%;
+    display: block;
+    margin-top: 2em;
+    border: none;
+    border-bottom: 1px solid #0a475c;
+}
+
+.input_registro:not(:placeholder-shown):invalid {
+    border-bottom: 2px solid red;
+}
+
+.input_registro:not(:placeholder-shown):valid {
+    border-bottom: 2px solid lightgreen;
+}
+
+.submit_nuevo_usuario, .submit_usuario_registrado {
+    background-color: #0a475c;
+    border-radius: 8px;
+    color: white;
+    padding: 0.4em 1em 0.4em 1em;
+}
+
+.submit_usuario_registrado {
+    margin: 2em 0 1em 0;
+}
+
+.submit_nuevo_usuario {
+    margin: 2em 0 -1.2em 0;
+}
