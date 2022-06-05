@@ -32,11 +32,33 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                    <?php
+                        //Evita que salte el texto de error en la cabecera al no encontrar a un usuario conectado
+                        if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        //Enlaces para usuario
+                        if (isset($_SESSION['usuario'])){
+                    ?>
+                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
+                        <?php
+                        //Enlaces para administrador
+                        } else if (isset($_SESSION['admin'])){
+                    ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
+                    <?php 
+                        //Enlaces para no-loggeados
+                        } else {
+                    ?>
                         <li class="nav-item"><a class="nav_enlace log" href="registro_login.php">login</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">logout</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -51,7 +73,6 @@
 
     <div class="cuerpo_fondo">
         <div class="cuerpo_el_proyecto" id="el_proyecto">
-
         </div>
         <div class="cuerpo_contacto" id="contacto">
             <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.522412591126!2d-3.6933637000000004!3d40.41942969999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422884b69894d3%3A0x42597193d8bd3e47!2sPlaza%20Cibeles%2C%2028014%20Madrid!5e0!3m2!1ses!2ses!4v1654164882894!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

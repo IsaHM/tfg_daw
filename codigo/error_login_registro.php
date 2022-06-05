@@ -15,10 +15,9 @@
 </head>
 <body>
     <div class="contenedor_error">
-        <h2>Ha ocurrido un error al introducir la información del usuario</h2>
-        <p>Por favor, elija una opción:</p>
-        <a href="registro_login.php">Volver al Login</a>
-        <a href="landpage.php">Página principal</a>
+        <h2 class="titulo_error">ha ocurrido un error al introducir los datos del usuario</h2>
+        <a href="registro_login.php" class="btn_volver_login">Volver al Login</a>
+        <a href="landpage.php" class="btn_volver_landpage">Página principal</a>
     </div>
 </body>
 </html>

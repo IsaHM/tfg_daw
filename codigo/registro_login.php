@@ -33,24 +33,55 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                    <?php
+                        //Evita que salte fallo al no estar conectado
+                        if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+                            session_start();
+                        }
+
+                        if (isset($_SESSION['usuario'])){
+                    ?>
+                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
+                        <?php
+                        //No lee al usuario como administrador
+                        } else if (isset($_SESSION['admin'])){
+                    ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">login</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">logout</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav_enlace log" href="registro_login.php">login</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="cuerpo_registro_login" style="padding-top:200px;">
+    <?php
+        //Evita que salte fallo al no estar conectado
+        if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (isset($_SESSION['usuario']) || isset($_SESSION['admin'])){
+    ?>
+        <div class="registro">
+        <h2>ya te encuentras conectado</h2>
+        </div>
+    <?php
+        } else {
+    ?>
         <div class="registro">
         <h2>nuevo usuario</h2>
             <form class="form_registro" action="servidor.php" method="post">
                 <input class="input_registro" type="hidden" name="option" value="registro">
                 <input class="input_registro" type="text" name="email" placeholder="Correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60" required>
                 <input class="input_registro" type="text" name="nombre" placeholder="Nombre de usuario" pattern="[a-zA-Z0-9-_]+" minlength="2" maxlength="30" required>
-                <input class="input_registro" type="password" name="pass" placeholder="Contraseña (mínimo 8 carácteres)" minlength="8" maxlength="60" required>
+                <input class="input_registro" type="password" name="pass" placeholder="Contraseña (mínimo 8 carácteres)" pattern="[a-zA-Z0-9-_¡!¿?@#/.&%()]+" minlength="8" maxlength="60" required>
                 <input class="submit_nuevo_usuario" type="submit" value="Registro">
             </form><br>
         </div>
@@ -63,6 +94,7 @@
                 <input class="submit_usuario_registrado" type="submit" value="Iniciar sesión">
             </form>
         </div>
+    <?php } ?>
     </div>
 
     <!-- Pie de página -->

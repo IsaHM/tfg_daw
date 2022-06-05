@@ -42,8 +42,10 @@ class ConectorBD {
         $sql = "INSERT INTO usuario (email, nombre, pass, fecha_registro, administrador) VALUES ('$email', '$nombre','$pass', CURRENT_TIMESTAMP, 0)";
         
         if (mysqli_query($conector, $sql)) {
-            //JS pop up para dar aviso del registro correcto
-            header("Location: landpage.php");
+            echo '<script type="text/javascript">
+                    alert("Usuario creado correctamente");
+                    location="landpage.php";
+                </script>';
             exit();
         } else {
             header("Location: error_login_registro.php");
@@ -55,12 +57,30 @@ class ConectorBD {
     public function consultarUsuario($nombre, $pass) {
         $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
         $sql = "SELECT * FROM usuario where nombre = '$nombre' and pass = '$pass'";
+        $sql_admin = "SELECT administrador FROM usuario where nombre = '$nombre' and pass = '$pass' and administrador = '1'";
 
         $resultado = mysqli_query($conector, $sql);
+        $resultado_admin = mysqli_query($conector, $sql_admin);
         
+        //Busca si existe un usuario
         if ($resultado->num_rows == 1) {
-            //Llevar a la página principal con la sesión conectada
-            echo "EL USUARIO EXISTE";
+            /*
+                De existir una fila en la tabla de usuarios, realiza la búsqueda de $sql_admin
+                Si no aparecen filas, se ha conectado un usuario
+                Si aparecen filas, se ha conectado un administrador
+            */
+            if ($resultado_admin->num_rows == 0) {
+                session_start();
+                $_SESSION['usuario'] = $nombre;
+                header("Location: landpage.php");
+                exit();
+            } else {
+                session_start();
+                $_SESSION['admin'] = $nombre;
+                setcookie("cookie_usuario", 1, time()+60*60*24*30);
+                header("Location: landpage.php");
+                exit();
+            }            
         } else {
             header("Location: error_login_registro.php");
             exit();
