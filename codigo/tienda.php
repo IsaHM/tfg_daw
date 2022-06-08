@@ -1,3 +1,11 @@
+<?php
+    require 'ConectorBD.php';
+    $conector = new ConectorBD();
+    $lista_productos = $conector->productosOfertados();
+
+    $token = isset($_GET['token']) ? $_GET['token'] : '';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,15 +15,18 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css"> 
+    <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="css/fuentes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
+    <script src="js/cabecera.js"></script>
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://kit.fontawesome.com/24313a3b3e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png">
     <title>Cursor Academy</title>
 </head>
@@ -63,34 +74,47 @@
             </div>
         </nav>
     </header>
+    <?php
+        if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-    <div class="portada">
-        <h1 class="texto_portada">cursor academy</h1>
-        <!-- Texto con efecto portada.js -->
-        <h2>una plataforma para<span class="txt_rotar" data-period="2000" data-rotate='[" diseñadores."," programadores."," todo el mundo."]'></span></h2>
-    </div>
-
-    <div class="cuerpo_fondo">
-        <div class="cuerpo_el_proyecto" id="el_proyecto">
-        </div>
-        <div class="cuerpo_contacto" id="contacto">
-            <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.522412591126!2d-3.6933637000000004!3d40.41942969999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422884b69894d3%3A0x42597193d8bd3e47!2sPlaza%20Cibeles%2C%2028014%20Madrid!5e0!3m2!1ses!2ses!4v1654164882894!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <!-- 
-                Al no star desplegado en un dominio, siempre dará error en el envío.
-             -->
-            <form class="formulario_contacto" action="enviar_mail.php">
-                    <h2 class="contacto_titulo">contacto</h2>
-                    <p><input name="nombre_contacto" placeholder="Nombre" minlength="2" maxlength="30" pattern="[a-zA-Z0-9-_]+" required></input></p>
-                    <p><input name="email_contacto" placeholder="Email de contacto" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></input></p>
-                    <p><input name="mensaje" placeholder="Escribe aquí tu mensaje" maxlength="460" required></input></p>
-                    <input class="btn_enviar_form" type="submit" name="submit" value="Enviar">
-                <div class="tlf_email">
-                    <span class="fa fa-phone"></span>601 23 45 67<br>
-                    <span class="fa fa-envelope-o"></span>contacto@cursoracademy.com
+        if (isset($_SESSION['usuario']) || isset($_SESSION['admin'])){
+    ?>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <?php foreach($lista_productos as $row) { ?>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <?php
+                            $id_producto = $row[0];
+                            $img = "/imgs/producto/$id_producto.jpg"            
+                        ?>
+                        <img src="<?php echo $img ?>" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title"><?php echo $row[1] ?></h4>
+                            <h5 class="card-text"><?php echo $row[4] ?></h5>
+                            <p class="card-text"><?php echo $row[2] ?></p>
+                            <p class="card-text"><?php echo $row[3] ?> EUR</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="" class="btn btn-success">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            <?php } ?>
+            <div class="carrito">
+                <button class="btn_carrito"><i class="fa-solid fa-basket-shopping"></i></button>
+            </div>
         </div>
     </div>
+    <?php } else { ?>
+        <div class="tienda_no_log">
+            <h2>debes estar conectado para acceder a la tienda</h2>
+            <a href="registro_login.php" class="btn_volver_login">Login</a>
+            <a href="landpage.php" class="btn_volver_landpage">Página principal</a>
+        </div>
+    <?php } ?>
 
     <!-- Pie de página -->
     <footer>

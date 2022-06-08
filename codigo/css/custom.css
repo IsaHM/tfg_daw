@@ -195,7 +195,7 @@ footer a:hover {
     font-size: 14px;
 }
 
-.formulario_contacto button {
+.formulario_contacto .btn_enviar_form {
     float: right;
     padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
     margin: 8px 0 0;
@@ -206,14 +206,14 @@ footer a:hover {
     transition: all .3s
 }
 
-.formulario_contacto button:hover {
+.formulario_contacto .btn_enviar_form:hover {
     opacity: 1;
     background: #0a475c;
     border: 2px solid #0a475c;
     color: white;
 }
 
-.formulario_contacto button:active {
+.formulario_contacto .btn_enviar_form:active {
     opacity: 0.8;
     background: #0a475c;
     border: 2px solid #0a475c;
@@ -243,4 +243,107 @@ footer a:hover {
     width: 750px;
     height: 450px;
     box-shadow: 0 0 40px -10px #0a475c;
+}
+
+/* --- PERFIL --- */
+
+/* Usuario conectado */
+
+.perfil_cuerpo {
+    background: url(/imgs/wp_perfil.jpg);
+    background-size: cover;
+    text-align: center;
+}
+
+.titulo_loggeado {
+    padding-top: 3.4em;
+    font-family: open_sans_semi_bold;
+    color: #FBCB0A;
+    font-size: 2.8em;
+    margin-bottom: 1.8em;
+}
+
+.perfil_form {
+    padding-bottom: 2.4em;
+}
+
+.perfil_opcion {
+    font-size: 1.9em;
+    font-family: open_sans_semi_bold;
+    color: #37e2d5;
+}
+
+.perfil_cuerpo h4 {
+    font-size: 1.2em;
+    color: #37e2d5;
+}
+
+.input_perfil {
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 0.2em 1.5em 0.2em 0.2em;
+}
+
+.perfil_submit {
+    padding: 0.2em 1.5em 0.2em 1.5em; /* top dcha bot izq*/
+    margin-left: 0.8em;
+    text-decoration: none;
+    color: 0a475c;
+    border: 2px solid #b4aee8;
+    border-radius: 4px;
+    background-color: #b4aee8;
+    cursor: pointer;
+    transition: all .3s
+}
+
+.submit_cambio:hover {
+    opacity: 1;
+    background: #0a475c;
+    border: 2px solid #0a475c;
+    color: white;
+}
+
+.submit_borrado:hover {
+    border: 2px solid red;
+    background-color: red;
+    color: white;
+}
+
+/* Usuario no conectado */
+
+.cuerpo_perfil_no_log {
+    height: 32em;
+}
+
+.titulo_no_loggeado {
+    padding-top: 6em;
+    font-family: open_sans_medium;
+    color:#FBCB0A;
+    font-size: 2.2em;
+    margin-bottom: 2em;
+}
+
+.btn_perfil {
+    padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
+    margin: 0 2.5em 0 2.5em;
+    text-decoration: none;
+    border: 2px solid #78788c;
+    color: white;
+    background-color: #0a475c;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn_perfil:hover {
+    opacity: 1;
+    background: #FBCB0A;
+    border: 2px solid #FBCB0A;
+    color: #0a475c;
+}
+
+.btn_perfil:active {
+    opacity: 0.8;
+    background: #0a475c;
+    border: 2px solid #0a475c;
+    color: white;
 }

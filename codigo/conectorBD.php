@@ -15,14 +15,9 @@ class ConectorBD {
 
     public function conectarBD() {
         $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
-        if(!$conector) {
-            echo "FALLO AL CONECTAR LA BASE DE DATOS<br>";
-        } else {
-            echo "BASE DE DATOS CONECTADA CORRECTAMENTE<br>";
-        }
-        mysqli_close($conector);
     }
 
+    // USUARIO
     public function comprobarEmail($email) {
         $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
         $sql = "SELECT * FROM usuario where email = '$email'";
@@ -43,8 +38,8 @@ class ConectorBD {
         
         if (mysqli_query($conector, $sql)) {
             echo '<script type="text/javascript">
-                    alert("Usuario creado correctamente");
-                    location="landpage.php";
+                    alert("Usuario creado correctamente.<br>Introduce los datos nuevamente en el login para acceder a la cuenta.");
+                    location="registro_login.php";
                 </script>';
             exit();
         } else {
@@ -77,7 +72,6 @@ class ConectorBD {
             } else {
                 session_start();
                 $_SESSION['admin'] = $nombre;
-                setcookie("cookie_usuario", 1, time()+60*60*24*30);
                 header("Location: landpage.php");
                 exit();
             }            
@@ -87,4 +81,104 @@ class ConectorBD {
         }
         mysqli_close($conector);
     }
+
+    public function cambiarMail($nombre, $mail_antiguo, $mail_nuevo, $pass) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM usuario where email = '$mail_antiguo' AND nombre = '$nombre' AND pass = '$pass'";
+        $sql_cambio = "UPDATE usuario SET email = '$mail_nuevo' WHERE email = '$mail_antiguo'";
+
+        $resultado = mysqli_query($conector, $sql);
+        
+        if ($resultado->num_rows == 1) {
+            if ($conector->query($sql_cambio) === TRUE) {
+                echo '<script type="text/javascript">
+                    alert("El correo electrónico ha sido actualizado.");
+                    location="perfil.php";
+                </script>';
+                exit();
+            } else {
+                echo '<script type="text/javascript">
+                    alert("No se ha podido actualizar la dirección email.");
+                    location="perfil.php";
+                </script>';
+                exit();
+            }
+        } else {
+            header("Location: error_login_registro.php");
+            exit();
+        }
+        mysqli_close($conector);
+    }
+
+    public function cambiarPass($nombre, $pass_antigua, $pass_nueva) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM usuario where pass = '$pass_antigua' AND nombre = '$nombre'";
+        $sql_cambio = "UPDATE usuario SET pass = '$pass_nueva' WHERE pass = '$pass_antigua'";
+
+        $resultado = mysqli_query($conector, $sql);
+        
+        if ($resultado->num_rows == 1) {
+            if ($conector->query($sql_cambio) === TRUE) {
+                echo '<script type="text/javascript">
+                    alert("La contraseña ha sido actualizada.");
+                    location="perfil.php";
+                </script>';
+                exit();
+            } else {
+                echo '<script type="text/javascript">
+                    alert("No se ha podido actualizar la contraseña.");
+                    location="perfil.php";
+                </script>';
+                exit();
+            }
+        } else {
+            header("Location: error_login_registro.php");
+            exit();
+        }
+        mysqli_close($conector);
+    }
+
+    public function borrarCuenta($nombre, $email, $pass) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM usuario where nombre = '$nombre' AND email = '$email' AND pass = '$pass'";
+        $sql_borrar = "DELETE FROM usuario WHERE nombre = '$nombre' AND email = '$email' AND pass = '$pass'";
+
+        $resultado = mysqli_query($conector, $sql);
+        
+        if ($resultado->num_rows == 1) {
+            if ($conector->query($sql_borrar) === TRUE) {
+                session_destroy();
+                echo '<script type="text/javascript">
+                    alert("Se ha eliminado al usuario.");
+                    location="landpage.php";
+                </script>';
+                exit();
+            } else {
+                echo '<script type="text/javascript">
+                    alert("No se ha encontrado al usuario.");
+                    location="perfil.php";
+                </script>';
+                exit();
+            }
+        } else {
+            header("Location: error_login_registro.php");
+            exit();
+        }
+        mysqli_close($conector);
+    }
+
+    //PRODUCTO
+    public function productosOfertados() {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM producto";
+
+        $resultado = mysqli_query($conector, $sql);
+
+        $lista_productos = $resultado->fetch_all();
+        
+        return $lista_productos;
+        mysqli_close($conector);
+    }
+
+    //CARRITO
 }

@@ -1,0 +1,57 @@
+.container .row {
+    margin-top: 7em;
+}
+
+.tienda_no_log {
+    padding-top: 12em;
+    height: 32em;
+    text-align: center;
+}
+
+.tienda_no_log h2 {
+    font-family: norwester;
+    color: #0a475c;
+    font-size: 2.4em;
+    margin-bottom: 1.2em;
+}
+
+.btn_volver_login, .btn_volver_landpage {
+    border-radius: 3px;
+    font-size: 1em;
+    font-family: open_sans_medium;
+    color: white;
+    padding: 0.6em 1.2em 0.6em 1.2em;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.btn_volver_landpage {
+    background-color:#590696;
+}
+
+.btn_volver_login {
+    background-color: #590696;
+}
+
+.btn_volver_login:hover, .btn_volver_landpage:hover {
+    background-color: #FBCB0A;
+    color: #0a475c;
+}
+
+.carrito {
+    text-align: right;
+}
+
+.btn_carrito {
+    position: fixed;
+    z-index: 1; /* Para superponerse al resto de objetos en la página */
+    bottom: 1.4em;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: none;
+}
+
+footer {
+    margin-top: 2.6em;
+}

@@ -51,6 +51,7 @@
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav_enlace log" href="registro_login.php">login</a></li>
