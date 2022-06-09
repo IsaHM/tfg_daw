@@ -104,7 +104,6 @@ switch ($option) {
             $id_producto = $_POST['id_producto'];
             $precio = $_POST['precio'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
             if(!empty($_POST['id_producto']) && !empty($_POST['precio'])) {
                 $conector->insertarProducto($id_sesion, $id_producto, $precio);        
             }
@@ -115,7 +114,6 @@ switch ($option) {
             $id_sesion = session_id();
             $id_producto = $_POST['id_producto'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
             if(!empty($_POST['id_producto'])) {
                 $conector->borrarProductoCarrito($id_producto);        
             }
@@ -125,7 +123,6 @@ switch ($option) {
             session_start();
             $email = $_POST['email'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
             if(!empty($_POST['email'])) {
                 $conector->darAdmin($email);        
             }
@@ -134,7 +131,6 @@ switch ($option) {
             session_start();
             $email = $_POST['email'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
             if(!empty($_POST['email'])) {
                 $conector->quitarAdmin($email);        
             }
@@ -143,11 +139,15 @@ switch ($option) {
             session_start();
             $email = $_POST['email'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
             if(!empty($_POST['email'])) {
                 $conector->adminBorrarCuenta($email);        
             }
-            break;     
+            break;
+        case "listado_usuarios":
+            session_start();
+            
+            $conector->adminVerUsuarios();        
+            break;  
 }
 ?>
 

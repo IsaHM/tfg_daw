@@ -304,4 +304,16 @@ class ConectorBD {
         }
         mysqli_close($conector);
     }
+
+    public function adminVerUsuarios() {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM usuario ORDER BY administrador DESC, fecha_registro ASC";
+
+        $resultado = mysqli_query($conector, $sql);
+
+        $lista_usuarios = $resultado->fetch_all();
+        
+        return $lista_usuarios;
+        mysqli_close($conector);
+    }
 }

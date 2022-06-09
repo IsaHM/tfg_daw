@@ -1,6 +1,8 @@
 <?php
     require 'ConectorBD.php';
     $conector = new ConectorBD();
+    $id_sesion = session_id();
+    $lista_usuarios = $conector->adminVerUsuarios();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
     <script src="js/cabecera.js"></script>
+    <script src="js/mostrar_tabla.js"></script>
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -81,33 +84,41 @@
             $usuario = $_SESSION['admin']; 
             $usuario_lc = strtolower($_SESSION['admin']); 
         ?>
-            <h2 class="admin_titulo">panel de <?php echo $usuario_lc; ?> (admin)</h2>
+            <h2 class="admin_titulo">panel de administrador</h2>
             <h3 class="admin_opcion">funciones sobre usuarios</h3>
                 <form action="servidor.php" method="post" class="admin_form">
                     <input class="admin_input" type="text" name="email" placeholder="Correo del usuario" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60">
                     <fieldset id="option">
-                        <!--  BUSCAR USUARIO -->
-                        <input type="radio" name="option" value="admin_borrar_usuario"> <p class="admin_radio_btn">Buscar usuario</p><br>
-                        <!-- !!! -->
                         <input type="radio" name="option" value="admin_dar_admin" checked> <p class="admin_radio_btn">Dar poderes de administrador</p><br>
                         <input type="radio" name="option" value="admin_quitar_admin"> <p class="admin_radio_btn">Eliminar poderes de administrador</p><br>
                         <input type="radio" name="option" value="admin_borrar_usuario"> <p class="admin_radio_btn">Borrar usuario</p>
                     </fieldset>
                     <input class="submit_admin" type="submit" value="Enviar">
                 </form>
-            <!--  VER TABLAS USUARIOS Y PRODUCTOS (BACK) -->
-            <div class="admin_tablas">
-                <form action="servidor.php" method="post" class="ver_usuario">
-                    <input class="input_perfil" type="hidden" name="option" value="listado_usuarios">
-                    <input class="submit_tablas_admin" type="submit" value="Ver listado de usuarios">
-                </form>
-                <!--  opcional -->
-                <form action="servidor.php" method="post" class="ver_usuario">
-                    <input class="input_perfil" type="hidden" name="option" value="listado_productos">
-                    <input class="submit_tablas_admin" type="submit" value="Ver listado de productos">
-                </form>
+            <!--
+                La tabla de usuarios aparece ordenada:
+                    Primero por administradores sobre usuarios base
+                    Segundo por fecha de registro (ascendente)
+            -->
+            <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaUsuarios();" href="#">Ocultar / mostrar usuarios</a>
+            <div class="contenedor_tabla_usuarios">
+                <table id="tabla_usuarios" class="tabla_usuarios">
+                    <tr class="tabla_usuarios_cabecera">
+                        <th>Correo electrónico</th>
+                        <th>Nombre</th>
+                        <th>Fecha de registro</th>
+                        <th>Administrador</th>
+                    </tr>
+                <?php foreach($lista_usuarios as $row) { ?>
+                    <tr class="tabla_usuarios_fila">
+                        <td><p><?php echo $row[0] ?></p></td>
+                        <td><p><?php echo $row[1] ?></p></td>
+                        <td><p><?php echo $row[3] ?></p></td>
+                        <td><p><?php echo $row[4] ?></p></td>
+                    </tr>    
+                <?php } ?>
+                </table>
             </div>
-            <!--  CERRAR 'VER TABLAS' -->
         <?php
         } else {
         ?>
@@ -159,5 +170,4 @@
         </div>
     </footer>
 </body>
-
 </html>

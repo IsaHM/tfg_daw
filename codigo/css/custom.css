@@ -406,3 +406,54 @@ footer a:hover {
     background: #d23a99;
     border: 2px solid #d23a99;
 }
+
+/* Tabla usuarios panel admin */
+.mostrar_ocultar_tabla {
+    padding: 0.6em 1.4em 0.6em 1.4em;
+    border-radius: 8px;
+    background-color: #b4aee8;
+    text-decoration: none;
+    color: black;
+    transition: all .3s;
+}
+
+.mostrar_ocultar_tabla:hover {
+    background-color: #590696;
+    color: white;
+}
+
+.contenedor_tabla_usuarios {
+    margin: auto;
+    margin-top: 2em;
+    width: 60%;
+    padding-bottom: 3em;
+}
+
+.tabla_usuarios {
+    width: 100%;
+}
+
+.tabla_usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #590696;
+    color: white;
+}
+  
+.tabla_usuarios td, .tabla_usuarios th {
+    padding-top: 1em;
+}
+  
+.tabla_usuarios tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.tabla_usuarios tr:nth-child(odd){
+    background-color: #e0e0e0;
+}
+  
+.tabla_usuarios tr:hover {
+    background-color: #b4aee8;
+}
+  
