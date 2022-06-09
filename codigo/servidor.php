@@ -4,6 +4,7 @@
     $conector = new ConectorBD();
 
 switch ($option) {
+    //USUARIOS
     case "registro":
         $email = $_POST['email'];
         $nombre = $_POST['nombre'];
@@ -95,6 +96,30 @@ switch ($option) {
                 header("Location: error_login_registro.php");
                 exit();
             }    
+            break;
+        //PRODUCTOS
+        case "meter_en_carrito":
+            session_start();
+            $id_sesion = session_id();
+            $id_producto = $_POST['id_producto'];
+            $precio = $_POST['precio'];
+            
+            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            if(!empty($_POST['id_producto']) && !empty($_POST['precio'])) {
+                $conector->insertarProducto($id_sesion, $id_producto, $precio);        
+            }
+
+            break;
+        case "borrar_del_carrito":
+            session_start();
+            $id_sesion = session_id();
+            $id_producto = $_POST['id_producto'];
+            
+            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            if(!empty($_POST['id_producto'])) {
+                $conector->borrarProductoCarrito($id_producto);        
+            }
+
             break;
 }
 ?>

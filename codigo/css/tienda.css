@@ -55,3 +55,37 @@
 footer {
     margin-top: 2.6em;
 }
+
+/* Carrito */
+
+.tabla_carrito {
+    width: 100%;
+    font-family: open_sans_regular;
+}
+
+.titulo_carrito {
+    font-family: norwester;
+    color: #590696;
+    font-size: 1.8em;
+}
+
+.carrito_fila {
+    padding-top: 1em;
+}
+
+.btn_borrar_carrito{
+    margin-top: 0.85em;
+    background-color: red;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border-radius: 4px;
+    border: none;
+}
+
+.btn_borrar_carrito:hover{
+    background-color: darkred;
+}
+
+.carrito_total {
+    font-family: open_sans_bold;
+    font-size: 1.1em;
+}

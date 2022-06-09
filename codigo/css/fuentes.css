@@ -4,11 +4,6 @@
 }
 
 @font-face {
-    font-family: yellowtail;
-    src: url(/fuentes/yellowtail.ttf) format("truetype");
-}
-
-@font-face {
     font-family: open_sans_bold;
     src: url(/fuentes/open_sans/OpenSans-Bold.ttf) format("truetype");
 }

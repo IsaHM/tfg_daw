@@ -74,7 +74,7 @@ class ConectorBD {
                 $_SESSION['admin'] = $nombre;
                 header("Location: landpage.php");
                 exit();
-            }            
+            }      
         } else {
             header("Location: error_login_registro.php");
             exit();
@@ -181,4 +181,54 @@ class ConectorBD {
     }
 
     //CARRITO
+    public function insertarProducto($id_sesion, $id_producto, $precio) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "INSERT INTO carrito (id_sesion, id_producto, cantidad, precio) VALUES ('$id_sesion', $id_producto, 1, $precio)";
+        $sql_busqueda = "SELECT id_producto FROM carrito where id_producto = '$id_producto'";
+        $sql_update = "UPDATE carrito SET cantidad = (cantidad)+1 where id_producto = '$id_producto'";
+
+        $resultado_busqueda = mysqli_query($conector, $sql_busqueda);
+
+        if ($resultado_busqueda->num_rows == 1) {
+            $resultado = mysqli_query($conector, $sql_update);
+        } else {
+            $resultado = mysqli_query($conector, $sql);
+        }        
+
+        header("Location: tienda.php");
+        exit();
+
+        mysqli_close($conector);
+    }
+
+    public function mostrarProductosEnCarrito() {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT c.id_producto, nombre_producto, categoria, cantidad, c.precio FROM producto p, carrito c WHERE p.id_producto = c.id_producto";
+
+        $resultado = mysqli_query($conector, $sql);
+
+        $lista_carrito = $resultado->fetch_all();
+        
+        return $lista_carrito;
+        mysqli_close($conector);
+    }
+    
+    function borrarCarrito() {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "DELETE FROM carrito";
+
+        $resultado = mysqli_query($conector, $sql);
+        mysqli_close($conector);
+    }
+
+    function borrarProductoCarrito($id_producto) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "DELETE FROM carrito WHERE id_producto = '$id_producto'";
+
+        $resultado = mysqli_query($conector, $sql);
+        mysqli_close($conector);
+
+        header("Location: tienda.php");
+        exit();
+    }
 }

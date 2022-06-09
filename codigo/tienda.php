@@ -1,9 +1,9 @@
 <?php
     require 'ConectorBD.php';
     $conector = new ConectorBD();
+    $id_sesion = session_id();
     $lista_productos = $conector->productosOfertados();
-
-    $token = isset($_GET['token']) ? $_GET['token'] : '';
+    $lista_carrito = $conector->mostrarProductosEnCarrito();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
-    <script src="js/cabecera.js"></script>
+    <script src="js/ventana_modal.js"></script>
+
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -88,6 +89,7 @@
                     <div class="card shadow-sm">
                         <?php
                             $id_producto = $row[0];
+                            $precio = $row[3];
                             $img = "/imgs/producto/$id_producto.jpg"            
                         ?>
                         <img src="<?php echo $img ?>" alt="">
@@ -96,16 +98,61 @@
                             <h5 class="card-text"><?php echo $row[4] ?></h5>
                             <p class="card-text"><?php echo $row[2] ?></p>
                             <p class="card-text"><?php echo $row[3] ?> EUR</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="" class="btn btn-success">Comprar</a>
-                            </div>
+                            <form class="form_registro" action="servidor.php" method="post">
+                                <input class="input_registro" type="hidden" name="option" value="meter_en_carrito">
+                                <input class="input_registro" type="hidden" name="id_producto" value="<?php echo $id_producto ?>">
+                                <input class="input_registro" type="hidden" name="precio" value="<?php echo $precio ?>">
+                                <input class="btn btn-success" type="submit" value="Añadir al carrito">
+                            </form>
                         </div>
                     </div>
                 </div>
             <?php } ?>
+            <!-- Botón carrito -->
             <div class="carrito">
-                <button class="btn_carrito"><i class="fa-solid fa-basket-shopping"></i></button>
+                <button type="button" class="btn btn-primary btn_carrito" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-basket-shopping"></i></button>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title titulo_carrito" id="exampleModalLabel">carrito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="tabla_carrito">
+                            <tr class="carrito_columna">
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>   
+                            </tr>                   
+                                <?php foreach($lista_carrito as $row_carrito) { ?>
+                                    <tr class="carrito_columna">
+                                    <?php $id_producto_carrito = $row_carrito[0] ?>
+                                        <td class="carrito_fila"><?php echo $row_carrito[1] ?></td>
+                                        <td class="carrito_fila"><?php echo $row_carrito[2] ?></td>
+                                        <td class="carrito_fila"><?php echo $row_carrito[3] ?></td>
+                                        <td class="carrito_fila"><?php echo $row_carrito[4] ?></td>
+                                        <td>
+                                            <form class="form_registro" action="servidor.php" method="post">
+                                                <input class="input_registro" type="hidden" name="option" value="borrar_del_carrito">
+                                                <input class="input_registro" type="hidden" name="id_producto" value="<?php echo $id_producto_carrito ?>">
+                                                <input class="btn_borrar_carrito btn-success" type="submit" value="Borrar">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php } ?> 
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Comprar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ventana modal carrito -->
+
         </div>
     </div>
     <?php } else { ?>
