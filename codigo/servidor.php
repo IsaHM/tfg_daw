@@ -119,8 +119,35 @@ switch ($option) {
             if(!empty($_POST['id_producto'])) {
                 $conector->borrarProductoCarrito($id_producto);        
             }
-
             break;
+        //ADMIN
+        case "admin_dar_admin":
+            session_start();
+            $email = $_POST['email'];
+            
+            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            if(!empty($_POST['email'])) {
+                $conector->darAdmin($email);        
+            }
+            break;
+        case "admin_quitar_admin":
+            session_start();
+            $email = $_POST['email'];
+            
+            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            if(!empty($_POST['email'])) {
+                $conector->quitarAdmin($email);        
+            }
+            break;
+        case "admin_borrar_usuario":
+            session_start();
+            $email = $_POST['email'];
+            
+            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            if(!empty($_POST['email'])) {
+                $conector->adminBorrarCuenta($email);        
+            }
+            break;     
 }
 ?>
 

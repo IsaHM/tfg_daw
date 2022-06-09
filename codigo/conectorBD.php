@@ -188,9 +188,11 @@ class ConectorBD {
         $sql_update = "UPDATE carrito SET cantidad = (cantidad)+1 where id_producto = '$id_producto'";
 
         $resultado_busqueda = mysqli_query($conector, $sql_busqueda);
-
+        
+        //Si existe ya un objeto igual en el carrito, suma 1 a la cantidad
         if ($resultado_busqueda->num_rows == 1) {
             $resultado = mysqli_query($conector, $sql_update);
+        //Si no existe, lo registra en la tabla
         } else {
             $resultado = mysqli_query($conector, $sql);
         }        
@@ -230,5 +232,76 @@ class ConectorBD {
 
         header("Location: tienda.php");
         exit();
+    }
+
+    function darAdmin($email) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "UPDATE usuario SET administrador = true where email = '$email' AND administrador = false";
+        $sql_busqueda = "SELECT email FROM usuario where email = '$email'";
+
+        $resultado_busqueda = mysqli_query($conector, $sql_busqueda);
+
+        if ($resultado_busqueda->num_rows == 1) {
+            $resultado = mysqli_query($conector, $sql); 
+            echo '<script type="text/javascript">
+                    alert("Se ha editado el rol del usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();     
+        } else {
+            echo '<script type="text/javascript">
+                    alert("No se ha podido editar el rol del usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();
+        }
+    }
+
+    function quitarAdmin($email) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "UPDATE usuario SET administrador = false where email = '$email' AND administrador = true";
+        $sql_busqueda = "SELECT * FROM usuario where email = '$email'";
+
+        $resultado_busqueda = mysqli_query($conector, $sql_busqueda);
+
+        if ($resultado_busqueda->num_rows == 1) {
+            $resultado = mysqli_query($conector, $sql); 
+            echo '<script type="text/javascript">
+                    alert("Se ha editado el rol del usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();     
+        } else {
+            echo '<script type="text/javascript">
+                    alert("No se ha podido editar el rol del usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();
+        }
+        mysqli_close($conector);
+    }
+
+    public function adminBorrarCuenta($email) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "SELECT * FROM usuario WHERE email = '$email'";
+        $sql_borrar = "DELETE FROM usuario WHERE email = '$email'";
+
+        $resultado = mysqli_query($conector, $sql);
+        
+        if ($resultado->num_rows == 1) {
+            $resultado_borrar = mysqli_query($conector, $sql_borrar); 
+            echo '<script type="text/javascript">
+                    alert("Se ha eliminado el usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();     
+        } else {
+            echo '<script type="text/javascript">
+                    alert("No se ha podido eliminar al usuario.");
+                    location="panel_admin.php";
+                </script>';
+                exit();
+        }
+        mysqli_close($conector);
     }
 }

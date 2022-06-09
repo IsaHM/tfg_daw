@@ -202,7 +202,6 @@ footer a:hover {
     border: 2px solid #78788c;
     background: 0;
     color: #5a5a6e;
-    cursor: pointer;
     transition: all .3s
 }
 
@@ -292,7 +291,6 @@ footer a:hover {
     border: 2px solid #b4aee8;
     border-radius: 4px;
     background-color: #b4aee8;
-    cursor: pointer;
     transition: all .3s
 }
 
@@ -330,7 +328,6 @@ footer a:hover {
     border: 2px solid #78788c;
     color: white;
     background-color: #0a475c;
-    cursor: pointer;
     transition: all .3s;
 }
 
@@ -346,4 +343,66 @@ footer a:hover {
     background: #0a475c;
     border: 2px solid #0a475c;
     color: white;
+}
+
+/* PANEL DE ADMINISTRADOR */
+.panel_admin_cuerpo {
+    background: url(/imgs/wp_admin.jpg);
+    background-size: cover;
+    text-align: center;
+}
+
+.admin_form {
+    width:20%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.perfil_datalist, .admin_input {
+    width:100%;
+    margin-bottom: 1em;
+}
+
+.admin_titulo {
+    font-family: norwester;
+    font-size: 3.4em;
+    color: #b4aee8;
+    padding: 3em 0 0.8em 0;
+}
+
+.admin_opcion {
+    font-family: norwester;
+    font-size: 1.6em;
+    color: #37e2d5;
+    margin-bottom: 0.6em;
+}
+
+.perfil_apartado {
+    font-size: 1.3em;
+    color: #FBCB0A;
+    text-align: center;
+    padding-bottom: 2em;
+    margin: -1em 0 0 0;
+}
+
+.admin_radio_btn {
+    display: inline-flex;
+    font-size: 1.1em;
+    color: #e0e0e0;
+}
+
+.submit_admin {
+    margin-bottom: 3em;
+    padding: 0.4em 1.4em 0.4em 1.4em;
+    border-radius: 8px;
+    border: 2px solid #0a475c;
+    background-color: #0a475c;
+    color: #e6e6e6;
+    transition: all .3s
+}
+
+.submit_admin:hover {
+    opacity: 1;
+    background: #d23a99;
+    border: 2px solid #d23a99;
 }
