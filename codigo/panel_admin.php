@@ -3,6 +3,7 @@
     $conector = new ConectorBD();
     $id_sesion = session_id();
     $lista_usuarios = $conector->adminVerUsuarios();
+    $lista_productos = $conector->productosOfertados();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
     <script src="js/cabecera.js"></script>
-    <script src="js/mostrar_tabla.js"></script>
+    <script src="js/tablas_admin.js"></script>
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -101,31 +102,52 @@
                     Segundo por fecha de registro (ascendente)
             -->
             <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaUsuarios();" href="#">Ocultar / mostrar usuarios</a>
+            <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaProductos();" href="#">Ocultar / mostrar productos</a>
             <div class="contenedor_tabla_usuarios">
                 <table id="tabla_usuarios" class="tabla_usuarios">
-                    <tr class="tabla_usuarios_cabecera">
+                    <tr>
                         <th>Correo electrónico</th>
-                        <th>Nombre</th>
+                        <th>Nombre del usuario</th>
                         <th>Fecha de registro</th>
                         <th>Administrador</th>
                     </tr>
-                <?php foreach($lista_usuarios as $row) { ?>
-                    <tr class="tabla_usuarios_fila">
-                        <td><p><?php echo $row[0] ?></p></td>
-                        <td><p><?php echo $row[1] ?></p></td>
-                        <td><p><?php echo $row[3] ?></p></td>
-                        <td><p><?php echo $row[4] ?></p></td>
+                <?php foreach($lista_usuarios as $row_usuarios) { ?>
+                    <tr>
+                        <td><p><?php echo $row_usuarios[0] ?></p></td>
+                        <td><p><?php echo $row_usuarios[1] ?></p></td>
+                        <td><p><?php echo $row_usuarios[3] ?></p></td>
+                        <td><p><?php echo $row_usuarios[4] ?></p></td>
                     </tr>    
                 <?php } ?>
                 </table>
             </div>
-        <?php
-        } else {
-        ?>
+            <div class="contenedor_tabla_productos">
+                <table id="tabla_productos" class="tabla_productos">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del producto</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th>Fecha de creación</th>
+                    </tr>
+                <?php foreach($lista_productos as $row_productos) { ?>
+                    <tr>
+                        <td><p><?php echo $row_productos[0] ?></p></td>
+                        <td><p><?php echo $row_productos[1] ?></p></td>
+                        <td><p><?php echo $row_productos[2] ?></p></td>
+                        <td><p><?php echo $row_productos[3] ?></p></td>
+                        <td><p><?php echo $row_productos[4] ?></p></td>
+                        <td><p><?php echo $row_productos[5] ?></p></td>
+                    </tr>    
+                <?php } ?>
+                </table>
+            </div>
+        <?php } else { ?>
             <div class="cuerpo_perfil_no_log">
                 <h2 class="titulo_no_loggeado">Solamente los administradores tienen permiso para acceder a esta página.</h2>
                 <a href="landpage.php" class="btn_perfil">Página principal</a>
-                <a href="registro_login.php" class="btn_perfil">Login / Registro</a>
+                <a href="logout.php" class="btn_perfil">Desconectarse</a>
             </div>
         <?php } ?>
     </div>

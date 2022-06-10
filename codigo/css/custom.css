@@ -137,13 +137,62 @@ footer a:hover {
 
 /* cuerpo del landpage */
 .cuerpo_fondo {
-    background-color: #e5e5e5;
+    background-color: #f2f2f2;
 }
 
 .cuerpo_el_proyecto {
-    height: 42em;
     width: 80%;
     margin: auto;
+}
+
+.el_proyecto {
+    padding: 4em 8em 0 8em;
+    margin-bottom: 2em;
+}
+
+.contenedor_izq div {
+    max-width: 80%;
+    padding: 2em 2em 0.2em 2em;
+    border-radius: 8px;
+    background-color: #FBCB0A;
+    box-shadow: 0 0 20px -4px #0a475c;
+}
+
+.contenedor_izq h3 {
+    font-size: 1.3em;
+    font-family: open_sans_italic;
+}
+
+.contenedor_izq_autor {
+    text-align: right;
+    font-size: 0.9em;
+    color:#5a5a6e;
+    padding-right: 1.6em;
+}
+
+.contenedor_dcha div { 
+    display: flex; 
+    align-items: flex-start;
+}
+
+.contenedor_dcha hr {
+    width: 240px;
+    border-top: 3px solid #590696;
+}
+
+.contenedor_dcha h3 {
+    font-family: open_sans_medium;
+    font-size: 2.4em;
+}
+
+.contenedor_dcha_texto h4 {
+    color: #0a475c;
+    font-family: open_sans_medium;
+    max-width: 8em;
+}
+
+.contenedor_dcha_texto p {
+    max-width: 24em;
 }
 
 /* contacto */
@@ -157,9 +206,9 @@ footer a:hover {
 .formulario_contacto {
     width: 24em;
     height: 26.5em;
-    background: #e6e6e6;
-    border-radius: 8px;
-    box-shadow: 0 0 40px -10px #0a475c;
+    background: #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 0 30px -10px #0a475c;
     margin: auto; 
     padding: 20px 30px; 
     box-sizing: border-box;
@@ -407,6 +456,10 @@ footer a:hover {
     border: 2px solid #d23a99;
 }
 
+.mostrar_ocultar_tabla {
+    margin-left: 1em;
+}
+
 /* Tabla usuarios panel admin */
 .mostrar_ocultar_tabla {
     padding: 0.6em 1.4em 0.6em 1.4em;
@@ -434,8 +487,7 @@ footer a:hover {
 }
 
 .tabla_usuarios th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 1em;
     text-align: center;
     background-color: #590696;
     color: white;
@@ -457,3 +509,37 @@ footer a:hover {
     background-color: #b4aee8;
 }
   
+/* Tabla productos panel admin */
+.contenedor_tabla_productos {
+    margin: auto;
+    margin-top: 2em;
+    width: 80%;
+    padding-bottom: 3em;
+}
+
+.tabla_productos {
+    width: 100%;
+}
+
+.tabla_productos th {
+    padding: 1em 1.5em 1em 1.5em;
+    text-align: center;
+    background-color: #0a475c;
+    color: white;
+}
+  
+.tabla_productos td, .tabla_productos th {
+    padding-top: 1em;
+}
+  
+.tabla_productos tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.tabla_productos tr:nth-child(odd){
+    background-color: #e0e0e0;
+}
+  
+.tabla_productos tr:hover {
+    background-color: #FBCB0A;
+}

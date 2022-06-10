@@ -70,6 +70,41 @@
         <h2>una plataforma para<span class="txt_rotar" data-period="2000" data-rotate='[" diseñadores."," programadores."," todo el mundo."]'></span></h2>
     </div>
 
+    <!-- El proyecto -->
+    <div class="mt-7 cuerpo_fondo">
+        <!-- Texto inicial del cuerpo -->
+        <div class="row el_proyecto">
+            <section class="col-lg-6 mb-lg-0 mt-4 contenedor_izq">
+                <div>
+                    <h3 class="mb-4">Cuando alguien dice: «esto también yo lo sé hacer», significa que sabe hacer de nuevo, de lo contrario lo hubiera hecho antes.</h3>
+                    <p class="contenedor_izq_autor">— Bruno Munari</p>
+                    <p class="mb-5">Con el auge del formato digital, destacar en el sector se ha vuelto imprescindible. Esto no se aplica solamente a la parte técnica de la programación; la imagen es un factor igual de decisivo a la hora de atraer al público potencial.</p>
+                </div>
+            </section>
+            <section class="col-lg-6 contenedor_dcha">
+                <h3 class="mb-8">El proyecto</h3>
+                <hr class="mb-4 mt-1">
+                <div class="mb-5">
+                    <div class="contenedor_dcha_texto">
+                        <h4>Una puerta de entrada al diseño UX</h4>
+                        <p>Enfocada en el diseño de aplicaciones para web y dispositivos móviles, la plataforma también proporciona las herramientas para familiarizarse con los conceptos básicos del diseño, como son la maquetación, la jerarquía de la información, el uso del color y la tipografía básicos o el desarrollo de la creatividad.</p>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <div class="contenedor_dcha_texto">
+                        <h4>Estretagia de aprendizaje</h4>
+                        <p>Cursos grabados donde cada usuario podrá aprender a su ritmo. La duración se adapta a las necesidades de la materia. El curso incluye un apartado de contacto directo con el instructor para las dudas ocasionadas.</p>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <div class="contenedor_dcha_texto">
+                        <h4>Material adicional de refuerzo</h4>
+                        <p>Además de los cursos, la plataforma ofrece otros productos enfocados en el crecimiento del usuario como diseñador UX, como pueden ser libros o licencias de software.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    <!-- Contacto -->
     <div class="cuerpo_fondo">
         <div class="cuerpo_el_proyecto" id="el_proyecto">
         </div>

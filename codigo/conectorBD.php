@@ -185,12 +185,23 @@ class ConectorBD {
         $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
         $sql = "INSERT INTO carrito (id_sesion, id_producto, cantidad, precio) VALUES ('$id_sesion', $id_producto, 1, $precio)";
         $sql_busqueda = "SELECT id_producto FROM carrito where id_producto = '$id_producto'";
-        $sql_update = "UPDATE carrito SET cantidad = (cantidad)+1 where id_producto = '$id_producto'";
+        
 
         $resultado_busqueda = mysqli_query($conector, $sql_busqueda);
         
-        //Si existe ya un objeto igual en el carrito, suma 1 a la cantidad
+        //Si existe ya un objeto igual en el carrito, suma 1 a la cantidad y el precio de un producto al total
         if ($resultado_busqueda->num_rows == 1) {
+            $sql_update = "UPDATE carrito SET cantidad = cantidad+1 where id_producto = '$id_producto'";
+            $update_cantidad = mysqli_query($conector, $sql_update);
+
+            //Suma el precio de una unidad al precio total de la cantidad previa
+            $sql_precio_unidad = "SELECT precio FROM producto where id_producto = '$id_producto'";
+            $resultado_precio_unidad = mysqli_query($conector, $sql_precio_unidad);
+            $resultado_precio_unidad = $resultado_precio_unidad->fetch_array();
+            $precio_unidad = floatval($resultado_precio_unidad[0]);
+        
+            $sql_update = "UPDATE carrito SET precio = precio+$precio_unidad where id_producto = '$id_producto'";
+
             $resultado = mysqli_query($conector, $sql_update);
         //Si no existe, lo registra en la tabla
         } else {
