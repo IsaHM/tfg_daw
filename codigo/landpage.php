@@ -24,13 +24,13 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-lg-4">
-                <a class="portada_btn_img" href="landpage.php"><img class="img_portada" src="/imgs/500x500_sin_fondo.png" width="70" height="70" alt="Logotipo Cursor Academy"></a>
+                <a class="portada_btn_img" href="#"><img class="img_portada" src="/imgs/500x500_sin_fondo.png" width="70" height="70" alt="Logotipo Cursor Academy"></a>
                 <!-- Main, menu, contact  -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="menu collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="#el_proyecto">el proyecto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="#contacto">contacto</a></li>
                     <?php
                         //Evita que salte el texto de error en la cabecera al no encontrar a un usuario conectado
                         if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
@@ -39,18 +39,16 @@
                         //Enlaces para usuario
                         if (isset($_SESSION['usuario'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //Enlaces para administrador
                         } else if (isset($_SESSION['admin'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="panel_admin.php">panel administrativo</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                     <?php 
                         //Enlaces para no-loggeados
@@ -71,7 +69,7 @@
     </div>
 
     <!-- El proyecto -->
-    <div class="mt-7 cuerpo_fondo">
+    <div id="el_proyecto" class="mt-7 cuerpo_fondo">
         <!-- Texto inicial del cuerpo -->
         <div class="row el_proyecto">
             <section class="col-lg-6 mb-lg-0 mt-4 contenedor_izq">
@@ -104,8 +102,18 @@
                 </div>
             </section>
         </div>
+    <!-- Botones de registro o tienda -->
+        <?php if (isset($_SESSION['usuario']) || isset($_SESSION['admin'])){ ?>
+            <div class="aviso_registro">
+            <a href="tienda.php">Acceso a la tienda</a>
+            </div>
+        <?php } else { ?>
+            <div class="aviso_registro">
+            <a href="registro_login.php">Únete a la plataforma</a>
+            </div>
+        <?php } ?>
     <!-- Contacto -->
-    <div class="cuerpo_fondo">
+    <div id="el_proyecto" class="cuerpo_fondo">
         <div class="cuerpo_el_proyecto" id="el_proyecto">
         </div>
         <div class="cuerpo_contacto" id="contacto">

@@ -143,11 +143,27 @@ switch ($option) {
                 $conector->adminBorrarCuenta($email);        
             }
             break;
-        case "listado_usuarios":
+        case "admin_nuevo_producto":
             session_start();
-            
-            $conector->adminVerUsuarios();        
-            break;  
+            $producto_nombre = $_POST['producto_nombre'];
+            $descripcion = $_POST['producto_descripcion'];
+            $precio = $_POST['producto_precio'];
+            $categoria = $_POST['producto_categoria'];
+            $url = $_POST['producto_url_img'];
+            $alt = $_POST['producto_url_alt'];
+                
+            if(!empty($_POST['producto_nombre']) && !empty($_POST['producto_descripcion']) && !empty($_POST['producto_precio']) && !empty($_POST['producto_categoria']) && !empty($_POST['producto_url_img']) && !empty($_POST['producto_url_alt'])) {
+                $conector->nuevoProducto($producto_nombre, $descripcion, $precio, $categoria, $url, $alt);        
+            }     
+            break;
+        case "admin_eliminar_producto":
+            session_start();
+            $producto_nombre = $_POST['producto_nombre'];
+                    
+            if(!empty($_POST['producto_nombre'])) {
+                $conector->eliminarProducto($producto_nombre);        
+            }     
+            break; 
 }
 ?>
 

@@ -327,4 +327,44 @@ class ConectorBD {
         return $lista_usuarios;
         mysqli_close($conector);
     }
+
+    public function nuevoProducto($producto_nombre, $descripcion, $precio, $categoria, $url, $alt) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "INSERT INTO producto (nombre_producto, descripcion, precio, categoria, fecha_producto, url_img, alt_img) VALUES ('$producto_nombre', '$descripcion','$precio', '$categoria', CURRENT_TIMESTAMP, '$url', '$alt')";
+
+        if (mysqli_query($conector, $sql)) {
+            echo '<script type="text/javascript">
+                    alert("Se ha añadido el producto a la tienda.");
+                    location="panel_admin.php";
+                </script>';
+                exit();    
+        } else {
+            echo '<script type="text/javascript">
+                    alert("No se ha podido añadir el producto.");
+                    location="panel_admin.php";
+                </script>';
+                exit();
+        }
+        mysqli_close($conector);
+    }
+
+    public function eliminarProducto($producto_nombre) {
+        $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
+        $sql = "DELETE FROM producto WHERE nombre_producto = '$producto_nombre'";
+
+        if (mysqli_query($conector, $sql)) {
+            echo '<script type="text/javascript">
+                    alert("Se ha eliminado el producto.");
+                    location="panel_admin.php";
+                </script>';
+                exit();    
+        } else {
+            echo '<script type="text/javascript">
+                    alert("No se ha podido eliminar el producto.");
+                    location="panel_admin.php";
+                </script>';
+                exit();
+        }
+        mysqli_close($conector);
+    }
 }

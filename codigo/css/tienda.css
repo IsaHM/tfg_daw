@@ -25,6 +25,10 @@
     transition: all .3s;
 }
 
+.row_tienda_clasificacion {
+    color: #590696;
+}
+
 .btn_volver_landpage {
     background-color:#590696;
 }

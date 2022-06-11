@@ -43,8 +43,8 @@
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="menu collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#el_proyecto">el proyecto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#contacto">contacto</a></li>
                         <?php
                         //Evita que salte el texto de error en la cabecera al no encontrar a un usuario conectado
                         if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
@@ -53,18 +53,16 @@
                         //Enlaces para usuario
                         if (isset($_SESSION['usuario'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //Enlaces para administrador
                         } else if (isset($_SESSION['admin'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php 
                         //Enlaces para no-loggeados
@@ -85,24 +83,56 @@
             $usuario = $_SESSION['admin']; 
             $usuario_lc = strtolower($_SESSION['admin']); 
         ?>
-            <h2 class="admin_titulo">panel de administrador</h2>
-            <h3 class="admin_opcion">funciones sobre usuarios</h3>
-                <form action="servidor.php" method="post" class="admin_form">
-                    <input class="admin_input" type="text" name="email" placeholder="Correo del usuario" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60">
-                    <fieldset id="option">
-                        <input type="radio" name="option" value="admin_dar_admin" checked> <p class="admin_radio_btn">Dar poderes de administrador</p><br>
-                        <input type="radio" name="option" value="admin_quitar_admin"> <p class="admin_radio_btn">Eliminar poderes de administrador</p><br>
-                        <input type="radio" name="option" value="admin_borrar_usuario"> <p class="admin_radio_btn">Borrar usuario</p>
-                    </fieldset>
-                    <input class="submit_admin" type="submit" value="Enviar">
-                </form>
+                <h2 class="admin_titulo">panel de administrador</h2>
+                
+                <div class="form_contenedor">
+                    
+
+
+                    <!-- Administrador de productos -->
+                        <form action="servidor.php" method="post">
+                        <h3>funciones sobre productos</h3>
+                            <input class="admin_input" type="text" name="producto_nombre" placeholder="Nombre del producto" maxlength="100" required>
+                            <input class="admin_input" type="text" name="producto_descripcion" placeholder="Descripción *" maxlength="400">
+                            <input class="admin_input" type="number" step="0.01" name="producto_precio" placeholder="Precio (ej. 99.99) *" maxlength="13">
+                            <input class="admin_input" type="text" name="producto_categoria" placeholder="Categoría *" pattern="[a-zA-Z0-9-_¡!¿?@#/.&%()]+" maxlength="80">
+                            <input class="admin_input" type="text" name="producto_url_img" placeholder="URL de la imagen *" maxlength="80">
+                            <input class="admin_input" type="text" name="producto_url_alt" placeholder="ALT para la imagen *" maxlength="200">
+                            <fieldset id="option">
+                                <input type="radio" name="option" value="admin_nuevo_producto" checked> <p class="admin_radio_btn">Añadir producto</p><br>
+                                <input type="radio" name="option" value="admin_eliminar_producto"> <p class="admin_radio_btn">Eliminar producto</p><br>
+                            </fieldset>
+                            <p class="admin_anotacion">* Sólo necesario para añadir un nuevo producto</p>
+                            <input class="submit_admin" type="submit" value="Enviar">
+                        </form>
+
+
+                        <!-- Administrador de usuarios -->
+                        <form action="servidor.php" method="post">
+                        <h3>funciones sobre usuarios</h3>
+                            <input class="admin_input" type="text" name="email" placeholder="Correo del usuario" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60">
+                            <fieldset id="option">
+                                <input type="radio" name="option" value="admin_dar_admin" checked> <p class="admin_radio_btn">Dar poderes de administrador</p><br>
+                                <input type="radio" name="option" value="admin_quitar_admin"> <p class="admin_radio_btn">Eliminar poderes de administrador</p><br>
+                                <input type="radio" name="option" value="admin_borrar_usuario"> <p class="admin_radio_btn">Borrar usuario</p>
+                            </fieldset>
+                            <input class="submit_admin" type="submit" value="Enviar">
+                        </form>
+                </div>
+
+
+
+            
+            <!-- Botones de ocultar y mostrar -->
+            <div class="botones_mostrar_ocultar">
+                <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaUsuarios();" href="#">Ocultar / mostrar usuarios</a>
+                <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaProductos();" href="#">Ocultar / mostrar productos</a>
+            </div>
             <!--
                 La tabla de usuarios aparece ordenada:
                     Primero por administradores sobre usuarios base
                     Segundo por fecha de registro (ascendente)
             -->
-            <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaUsuarios();" href="#">Ocultar / mostrar usuarios</a>
-            <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaProductos();" href="#">Ocultar / mostrar productos</a>
             <div class="contenedor_tabla_usuarios">
                 <table id="tabla_usuarios" class="tabla_usuarios">
                     <tr>

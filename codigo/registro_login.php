@@ -31,8 +31,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="menu collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#el_proyecto">el proyecto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#contacto">contacto</a></li>
                     <?php
                         //Evita que salte fallo al no estar conectado
                         if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
@@ -41,17 +41,16 @@
 
                         if (isset($_SESSION['usuario'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //No lee al usuario como administrador
                         } else if (isset($_SESSION['admin'])){
                     ?>
-                        <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="panel_admin.php">panel administrativo</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav_enlace log" href="registro_login.php">login</a></li>

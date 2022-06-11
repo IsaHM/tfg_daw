@@ -41,8 +41,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="menu collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav_enlace" href="#">el proyecto</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">contacto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#el_proyecto">el proyecto</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="landpage.php#contacto">contacto</a></li>
                     <?php
                         //Evita que salte el texto de error en la cabecera al no encontrar a un usuario conectado
                         if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
@@ -52,17 +52,15 @@
                         if (isset($_SESSION['usuario'])){
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //Enlaces para administrador
                         } else if (isset($_SESSION['admin'])){
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">prueba de conocimiento</a></li>
-                        <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="#">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace" href="panel_admin.php">panel administrativo</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                     <?php 
                         //Enlaces para no-loggeados
@@ -89,13 +87,12 @@
                     <div class="card shadow-sm">
                         <?php
                             $id_producto = $row[0];
-                            $precio = $row[3];
-                            $img = "/imgs/producto/$id_producto.jpg"            
+                            $precio = $row[3];       
                         ?>
-                        <img src="<?php echo $img ?>" alt="">
+                        <img src="<?php echo $row[6] ?>" alt="<?php echo $row[7] ?>">
                         <div class="card-body">
                             <h4 class="card-title"><?php echo $row[1] ?></h4>
-                            <h5 class="card-text"><?php echo $row[4] ?></h5>
+                            <h5 class="card-text mt-3 mb-3 row_tienda_clasificacion"><?php echo $row[4] ?></h5>
                             <p class="card-text"><?php echo $row[2] ?></p>
                             <p class="card-text"><?php echo $row[3] ?> EUR</p>
                             <form class="form_registro" action="servidor.php" method="post">
@@ -108,6 +105,7 @@
                     </div>
                 </div>
             <?php } ?>
+            </div>
             <!-- Botón carrito -->
             <div class="carrito">
                 <button type="button" class="btn btn-primary btn_carrito" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-basket-shopping"></i></button>

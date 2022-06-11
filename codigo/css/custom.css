@@ -195,10 +195,37 @@ footer a:hover {
     max-width: 24em;
 }
 
+/* Botones de registro o tienda */
+.aviso_registro {
+    text-align: center;
+    margin: 3em 0 3em 0;
+}
+
+.aviso_registro a {
+    font-size: 1.4em;
+    font-family: open_sans_semi_bold;
+    text-decoration: none;
+    color: #590696;
+    border: 6px solid #590696;
+    opacity: 0.8;
+    border-radius: 4px;
+    padding: 0.5em 1em 0.5em 1em;
+    transition: all 0.6s;
+}
+
+.aviso_registro a:hover {
+    background-color: #590696;
+    color: white;
+}
+
+.aviso_registro a:focus {
+    opacity: 1;
+}
+
 /* contacto */
 .cuerpo_contacto {
     margin: 0 5% 0 5%;
-    padding-top: 2em;
+    padding-top: 5%;
     padding-bottom: 3em;
     display: flex;
 }
@@ -401,15 +428,43 @@ footer a:hover {
     text-align: center;
 }
 
-.admin_form {
-    width:20%;
+.form_contenedor {
+    display: flex;
+    width:80%;
+    margin: 0 auto;
+}
+
+.form_contenedor h3 {
+    font-family: norwester;
+    font-size: 1.6em;
+    color: #37e2d5;
+    margin-bottom: 0.6em;
+}
+
+.form_contenedor form {
+    width:30%;
     margin: 0 auto;
     text-align: center;
+}
+
+.form_contenedor form input {
+    text-align: center;
+}
+
+.form_contenedor form fieldset {
+    text-align: left;
+}
+
+.admin_anotacion {
+    color: #FBCB0A;
+    text-align: right;
+    font-size: 0.8em;
 }
 
 .perfil_datalist, .admin_input {
     width:100%;
     margin-bottom: 1em;
+    display: flex;
 }
 
 .admin_titulo {
@@ -417,13 +472,6 @@ footer a:hover {
     font-size: 3.4em;
     color: #b4aee8;
     padding: 3em 0 0.8em 0;
-}
-
-.admin_opcion {
-    font-family: norwester;
-    font-size: 1.6em;
-    color: #37e2d5;
-    margin-bottom: 0.6em;
 }
 
 .perfil_apartado {
@@ -456,11 +504,11 @@ footer a:hover {
     border: 2px solid #d23a99;
 }
 
-.mostrar_ocultar_tabla {
-    margin-left: 1em;
+/* Tabla usuarios panel admin */
+.botones_mostrar_ocultar {
+    display: inline-block;
 }
 
-/* Tabla usuarios panel admin */
 .mostrar_ocultar_tabla {
     padding: 0.6em 1.4em 0.6em 1.4em;
     border-radius: 8px;
@@ -468,6 +516,7 @@ footer a:hover {
     text-decoration: none;
     color: black;
     transition: all .3s;
+    margin-left: 1em;
 }
 
 .mostrar_ocultar_tabla:hover {
