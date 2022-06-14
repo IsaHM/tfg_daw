@@ -1,5 +1,5 @@
 .container .row {
-    margin-top: 7em;
+    margin: 7em 0 2em 0;
 }
 
 .tienda_no_log {
@@ -56,8 +56,14 @@
     border: none;
 }
 
-footer {
-    margin-top: 2.6em;
+@media (max-width: 1024px) {    
+    .container .row {
+        margin-top: 7em;
+    }
+    
+    .btn_carrito {
+        left: 91%;
+    }
 }
 
 /* Carrito */
@@ -87,9 +93,4 @@ footer {
 
 .btn_borrar_carrito:hover{
     background-color: darkred;
-}
-
-.carrito_total {
-    font-family: open_sans_bold;
-    font-size: 1.1em;
 }

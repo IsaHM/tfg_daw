@@ -120,6 +120,17 @@ footer a:hover {
     text-align: center;
 }
 
+@media (max-width: 1024px) {
+    .pie_titulo {
+        margin-left: 0.9em;
+        font-size: 2.1em;
+    }
+    .pie_texto  {
+        margin-left: 1.6em;
+        font-size: 1.15em;
+    }
+}
+
 /* --- LANDPAGE --- */
 
 /* img de portada y texto interior */
@@ -133,6 +144,12 @@ footer a:hover {
 
 .portada h2 span {
     font-family: open_sans_medium;
+}
+
+@media (max-width: 1024px) {
+    .portada {
+        margin-top: 1%;
+    }
 }
 
 /* cuerpo del landpage */
@@ -195,6 +212,45 @@ footer a:hover {
     max-width: 24em;
 }
 
+@media (max-width: 1024px) {    
+    .el_proyecto {
+        padding: 4em 2em 0 2em;
+    }
+    
+    .contenedor_izq div {
+        max-width: 85%;
+    }
+    
+    .contenedor_izq h3 {
+        font-size: 1.25em;
+        font-family: open_sans_italic;
+    }
+    
+    .contenedor_izq_autor {
+        text-align: right;
+        padding-right: 1em;
+    }
+    
+    .contenedor_dcha div { 
+        display: flex; 
+        align-items: flex-start;
+    }
+    
+    .contenedor_dcha h3 {
+        font-family: open_sans_medium;
+        font-size: 2.25em;
+    }
+    
+    .contenedor_dcha_texto h4 {
+        font-size: 1.25em;
+    }
+    
+    .contenedor_dcha_texto p {
+        max-width: 18em;
+        font-size: 0.95em;
+    }
+}
+
 /* Botones de registro o tienda */
 .aviso_registro {
     text-align: center;
@@ -220,6 +276,13 @@ footer a:hover {
 
 .aviso_registro a:focus {
     opacity: 1;
+}
+
+@media (max-width: 1024px) {    
+    .aviso_registro a {
+        font-size: 1.2em;
+        border: 5px solid #590696;
+    }
 }
 
 /* contacto */
@@ -274,7 +337,7 @@ footer a:hover {
 .formulario_contacto .btn_enviar_form {
     float: right;
     padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
-    margin: 8px 0 0;
+    margin: 8px 0 0 0;
     border: 2px solid #78788c;
     background: 0;
     color: #5a5a6e;
@@ -318,6 +381,36 @@ footer a:hover {
     width: 750px;
     height: 450px;
     box-shadow: 0 0 40px -10px #0a475c;
+}
+
+@media (max-width: 1024px) {    
+    .cuerpo_contacto {
+        margin: 0 2% 0 2%;
+        padding-bottom: 5em;
+    }
+    
+    .formulario_contacto {
+        margin-left: 2em;
+        margin-right: 1.6em;
+    }
+    
+    .contacto_titulo {
+        font-family: norwester;
+        margin-top: 0.1em;
+        padding-bottom: 0.1em;  
+    }
+    
+    .formulario_contacto .btn_enviar_form {
+        padding: 0.5em 1.2em 0.5em 1.2em;
+    }
+    
+    .tlf_email {
+        font-size: 0.8em;
+    }
+    
+    .fa {
+        padding-right: 0.75em;
+    }
 }
 
 /* --- PERFIL --- */
@@ -383,6 +476,97 @@ footer a:hover {
     color: white;
 }
 
+@media (max-width: 1024px) {    
+    .titulo_loggeado {
+        font-size: 2.8em;
+        margin-bottom: 1.2em;
+    }
+    
+    .perfil_opcion {
+        font-size: 1.6em;
+    }
+    
+    .perfil_cuerpo h4 {
+        font-size: 1.15em;
+    }
+    
+    .input_perfil {
+        padding: 0.2em 1.2em 0.2em 0.2em;
+    }
+    
+    .perfil_submit {
+        padding: 0.2em 1.2em 0.2em 1.2em;
+    }
+}
+
+/* Formularios login / registro */
+
+.cuerpo_registro_login {
+    margin: auto;
+    width: auto;
+    height: 45em;
+    background: url(/imgs/wp_login.jpg);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cuerpo_registro_login div {
+    width: 40%;
+    box-shadow: 10px 10px 40px -14px #0a475c;
+    border-radius: 8px;
+    margin: 0 3em 5em 3em;
+    padding: 1em 3em 1em 3em;
+    background-color: white;
+}
+
+.cuerpo_registro_login h2 {
+    font-size: 2.5em;
+    margin-top: 0.2em;
+    text-align: center;
+    color: #590696;
+    font-family: norwester;
+    margin-bottom: 0.6em;
+}
+
+.input_registro, .input_login {
+    width: 100%;
+    display: block;
+    margin-top: 2em;
+    border: none;
+    border-bottom: 1px solid #0a475c;
+}
+
+.input_registro:not(:placeholder-shown):invalid {
+    border-bottom: 2px solid red;
+}
+
+.input_registro:not(:placeholder-shown):valid {
+    border-bottom: 2px solid lightgreen;
+}
+
+.submit_nuevo_usuario, .submit_usuario_registrado {
+    background-color: #0a475c;
+    border-radius: 8px;
+    color: white;
+    padding: 0.4em 1em 0.4em 1em;
+}
+
+.submit_usuario_registrado {
+    margin: 2em 0 1em 0;
+}
+
+.submit_nuevo_usuario {
+    margin: 2em 0 -1.2em 0;
+}
+
+@media (max-width: 1024px) {    
+    .cuerpo_registro_login div {
+        padding: 1em 2em 1em 2em;
+    }
+}
+
 /* Usuario no conectado */
 
 .cuerpo_perfil_no_log {
@@ -419,6 +603,22 @@ footer a:hover {
     background: #0a475c;
     border: 2px solid #0a475c;
     color: white;
+}
+
+@media (max-width: 1024px) {    
+    .cuerpo_perfil_no_log {
+        height: 34em;
+    }
+    
+    .titulo_no_loggeado {
+        padding-top: 10em;
+        font-size: 1.6em;
+    }
+    
+    .btn_perfil {
+        padding: 0.5em 1.2em 0.5em 1.2em;
+        margin: 0 1.8em 0 1.8em;
+    }
 }
 
 /* PANEL DE ADMINISTRADOR */
@@ -461,7 +661,7 @@ footer a:hover {
     font-size: 0.8em;
 }
 
-.perfil_datalist, .admin_input {
+.admin_input {
     width:100%;
     margin-bottom: 1em;
     display: flex;
@@ -504,6 +704,37 @@ footer a:hover {
     border: 2px solid #d23a99;
 }
 
+@media (max-width: 1024px) {      
+    .form_contenedor {
+        width: 100%;
+    }
+    
+    .form_contenedor h3 {
+        font-size: 1.8em;
+    }
+    
+    .form_contenedor form {
+        width:35%;
+    }
+    
+    .perfil_apartado {
+        font-size: 1.3em;
+        color: #FBCB0A;
+        text-align: center;
+        padding-bottom: 2em;
+        margin: -1em 0 0 0;
+    }
+    
+    .admin_radio_btn {
+        font-size: 1em;
+    }
+    
+    .submit_admin {
+        margin-bottom: 6em;
+        font-size: 0.8em;
+    }
+}
+
 /* Tabla usuarios panel admin */
 .botones_mostrar_ocultar {
     display: inline-block;
@@ -544,6 +775,7 @@ footer a:hover {
   
 .tabla_usuarios td, .tabla_usuarios th {
     padding-top: 1em;
+    font-size: 0.9em;
 }
   
 .tabla_usuarios tr:nth-child(even){
@@ -556,6 +788,17 @@ footer a:hover {
   
 .tabla_usuarios tr:hover {
     background-color: #b4aee8;
+}
+
+@media (max-width: 1024px) {    
+    .mostrar_ocultar_tabla {
+        padding: 0.6em 1.2em 0.6em 1.2em;
+        margin-left: 1.6em;
+    }
+    
+    .contenedor_tabla_usuarios {
+        width: 80%;
+    }
 }
   
 /* Tabla productos panel admin */
@@ -591,4 +834,61 @@ footer a:hover {
   
 .tabla_productos tr:hover {
     background-color: #FBCB0A;
+}
+
+@media (max-width: 1024px) {    
+    .contenedor_tabla_productos {
+        margin-top: 0;
+        width: 92%;
+    }
+      
+    .tabla_productos td, .tabla_productos th {
+        font-size: 0.85em;
+    }
+}
+
+/* Pagina de error */
+.contenedor_error {
+    margin-top: 3em;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.titulo_error {
+    font-family: norwester;
+    color: #0a475c;
+    margin-bottom: 2em;
+}
+
+.btn_volver_login, .btn_volver_landpage {
+    border-radius: 3px;
+    font-size: 1em;
+    font-family: open_sans_medium;
+    color: white;
+    padding: 0.6em 1.2em 0.6em 1.2em;
+    text-decoration: none;
+}
+
+.btn_volver_landpage {
+    background-color:#590696;
+}
+
+.btn_volver_login {
+    background-color: #590696;
+}
+
+.btn_volver_login:hover, .btn_volver_landpage:hover {
+    background-color: #FBCB0A;
+    color: #0a475c;
+}
+
+@media (max-width: 1024px) {    
+    .contenedor_error {
+        margin-top: 4em;
+    }
+    
+    .titulo_error {
+        margin-bottom: 1.4em;
+    }
 }
