@@ -90,7 +90,7 @@
                 </div>
                 <div class="mb-5">
                     <div class="contenedor_dcha_texto">
-                        <h4>Estretagia de aprendizaje</h4>
+                        <h4>Estrategia de aprendizaje</h4>
                         <p>Cursos grabados donde cada usuario podrá aprender a su ritmo. La duración se adapta a las necesidades de la materia. El curso incluye un apartado de contacto directo con el instructor para las dudas ocasionadas.</p>
                     </div>
                 </div>

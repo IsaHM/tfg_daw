@@ -66,6 +66,27 @@
     }
 }
 
+@media (max-width: 480px) {    
+    .container .row {
+        margin: 7em 0 2em 0;
+    }
+    
+    .tienda_no_log h2 {
+        width: 95%;
+        margin: auto;
+        margin-bottom: 1em;
+        font-size: 2em;
+    }
+    
+    .btn_volver_login, .btn_volver_landpage {
+        font-size: 0.95em;
+    }
+    
+    .btn_carrito {
+        left: 81%;
+    }
+}
+
 /* Carrito */
 
 .tabla_carrito {
@@ -93,4 +114,15 @@
 
 .btn_borrar_carrito:hover{
     background-color: darkred;
+}
+
+@media (max-width: 480px) {    
+    .carrito_fila {
+        padding-top: 1em;
+        font-size: 0.65em;
+    }
+    
+    .btn_borrar_carrito{
+        font-size: 0.65em;
+    }
 }
