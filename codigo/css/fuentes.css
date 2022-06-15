@@ -1,3 +1,8 @@
+/* ---
+    Convierte los archivos .otf/.ttf para poder leerse en CSS con el atributo "font_family"
+    Con esto, puede visualizarse la fuente desde un ordenador que no tenga instaladas las fuentes
+--- */
+
 @font-face {
     font-family: norwester;
     src: url(/fuentes/norwester.otf) format("truetype");

@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fuentes.css">
     <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Cursor Academy - Error Usuario</title>
+    <title>Cursor Academy - Error</title>
 </head>
 <body>
     <div class="contenedor_error">

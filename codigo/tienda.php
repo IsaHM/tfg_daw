@@ -17,27 +17,28 @@
     <link rel="stylesheet" href="css/custom.css"> 
     <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="css/fuentes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/portada.js"></script>
     <script src="js/ventana_modal.js"></script>
+    <script src="https://kit.fontawesome.com/24313a3b3e.js" crossorigin="anonymous"></script>
 
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://kit.fontawesome.com/24313a3b3e.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png">
     <title>Cursor Academy</title>
 </head>
 
 <body>
+    <!-- CABECERA -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-lg-4">
                 <a class="portada_btn_img" href="landpage.php"><img class="img_portada" src="/imgs/500x500_sin_fondo.png" width="70" height="70" alt="Logotipo Cursor Academy"></a>
-                <!-- Main, menu, contact  -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="menu collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
@@ -50,17 +51,19 @@
                         }
                         //Enlaces para usuario
                         if (isset($_SESSION['usuario'])){
+                            $usuario = strtolower($_SESSION['usuario']);
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php"><?php echo $usuario; ?></a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //Enlaces para administrador
                         } else if (isset($_SESSION['admin'])){
+                            $usuario = strtolower($_SESSION['admin']);
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="#">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="panel_admin.php">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php"><?php echo $usuario; ?></a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                     <?php 
                         //Enlaces para no-loggeados
@@ -80,6 +83,7 @@
 
         if (isset($_SESSION['usuario']) || isset($_SESSION['admin'])){
     ?>
+    <!-- Recibe los datos de cada fila en la base de datos "producto" y genera una ficha por cada una -->
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
             <?php foreach($lista_productos as $row) { ?>
@@ -99,6 +103,7 @@
                                 <input class="input_registro" type="hidden" name="option" value="meter_en_carrito">
                                 <input class="input_registro" type="hidden" name="id_producto" value="<?php echo $id_producto ?>">
                                 <input class="input_registro" type="hidden" name="precio" value="<?php echo $precio ?>">
+                                <!-- Añade el producto de la ficha a la tabla "carrito" -->
                                 <input class="btn btn-success" type="submit" value="Añadir al carrito">
                             </form>
                         </div>
@@ -106,10 +111,14 @@
                 </div>
             <?php } ?>
             </div>
-            <!-- Botón carrito -->
+            <!--
+                BOTÓN CARRITO
+                Despliega una ventana modal con la información en la tabla "carrito"
+            -->
             <div class="carrito">
                 <button type="button" class="btn btn-primary btn_carrito" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-basket-shopping"></i></button>
             </div>
+            <!-- CARRITO -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -124,7 +133,8 @@
                                 <th>Categoría</th>
                                 <th>Cantidad</th>
                                 <th>Precio</th>   
-                            </tr>                   
+                            </tr>             
+                                <!-- Recibe los datos de cada fila en la base de datos "carrito" y genera una linea por cada una -->      
                                 <?php foreach($lista_carrito as $row_carrito) { ?>
                                     <tr class="carrito_columna">
                                     <?php $id_producto_carrito = $row_carrito[0] ?>
@@ -144,16 +154,19 @@
                         </table>
                     </div>
                     <div class="modal-footer">
+                        <!--
+                            Este botón no es funcional
+                            Sería el responsable de llevar a la pasarela de pagos
+                        -->
                         <button type="button" class="btn btn-primary">Comprar</button>
                     </div>
                     </div>
                 </div>
             </div>
-            <!-- Ventana modal carrito -->
-
         </div>
     </div>
     <?php } else { ?>
+        <!-- Aviso para no-loggeados -->
         <div class="tienda_no_log">
             <h2>debes estar conectado para acceder a la tienda</h2>
             <a href="registro_login.php" class="btn_volver_login">Login</a>
@@ -161,7 +174,7 @@
         </div>
     <?php } ?>
 
-    <!-- Pie de página -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="pie_pagina">
             <div class="row">

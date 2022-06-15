@@ -1,3 +1,5 @@
+/* Despliega u oculta las tablas del panel de administración */
+
 function tablaUsuarios() {
     var myTable = document.getElementById("tabla_usuarios");
     myTable.style.display = (myTable.style.display == "table") ? "none" : "table";

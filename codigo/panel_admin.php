@@ -17,27 +17,25 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/fuentes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- JS -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/portada.js"></script>
-    <script src="js/cabecera.js"></script>
     <script src="js/tablas_admin.js"></script>
     <!-- Link para el menú desplegable -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.png">
     <title>Cursor Academy</title>
 </head>
 
 <body>
+    <!-- CABECERA -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-lg-4">
                 <a class="portada_btn_img" href="landpage.php"><img class="img_portada"
                         src="/imgs/500x500_sin_fondo.png" width="70" height="70" alt="Logotipo Cursor Academy"></a>
-                <!-- Main, menu, contact  -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -52,17 +50,19 @@
                         }
                         //Enlaces para usuario
                         if (isset($_SESSION['usuario'])){
+                            $usuario = strtolower($_SESSION['usuario']);
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php"><?php echo $usuario; ?></a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php
                         //Enlaces para administrador
                         } else if (isset($_SESSION['admin'])){
+                            $usuario = strtolower($_SESSION['admin']);
                     ?>
                         <li class="nav-item"><a class="nav_enlace" href="tienda.php">productos</a></li>
                         <li class="nav-item"><a class="nav_enlace" href="#">panel administrativo</a></li>
-                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php">perfil</a></li>
+                        <li class="nav-item"><a class="nav_enlace log" href="perfil.php"><?php echo $usuario; ?></a></li>
                         <li class="nav-item"><a class="nav_enlace log" href="logout.php">logout</a></li>
                         <?php 
                         //Enlaces para no-loggeados
@@ -78,18 +78,12 @@
 
     <div class="panel_admin_cuerpo">
         <?php
-        //Enlaces para usuario
-        if (isset($_SESSION['admin'])){   
-            $usuario = $_SESSION['admin']; 
-            $usuario_lc = strtolower($_SESSION['admin']); 
+        if (isset($_SESSION['admin'])){
         ?>
+            <!-- FORMULARIOS DEL ADMINISTRADOR -->
                 <h2 class="admin_titulo">panel de administrador</h2>
-                
-                <div class="form_contenedor">
-                    
-
-
-                    <!-- Administrador de productos -->
+                <div class="form_contenedor">                 
+                    <!-- Opciones de administrador sobre productos -->
                         <form action="servidor.php" method="post">
                         <h3>funciones sobre productos</h3>
                             <input class="admin_input" type="text" name="producto_nombre" placeholder="Nombre del producto" maxlength="100" required>
@@ -105,9 +99,7 @@
                             <p class="admin_anotacion">* Sólo necesario para añadir un nuevo producto</p>
                             <input class="submit_admin" type="submit" value="Enviar">
                         </form>
-
-
-                        <!-- Administrador de usuarios -->
+                    <!-- Opciones de administrador sobre usuarios -->
                         <form action="servidor.php" method="post">
                         <h3>funciones sobre usuarios</h3>
                             <input class="admin_input" type="text" name="email" placeholder="Correo del usuario" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="60">
@@ -119,19 +111,17 @@
                             <input class="submit_admin" type="submit" value="Enviar">
                         </form>
                 </div>
-
-
-
-            
-            <!-- Botones de ocultar y mostrar -->
+        <!-- TABLAS -->
+            <!-- Botones de mostrar u ocultar tablas -->
             <div class="botones_mostrar_ocultar">
                 <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaUsuarios();" href="#">Ocultar / mostrar usuarios</a>
                 <a id="toggleTableDisplay" class="mostrar_ocultar_tabla" onclick="tablaProductos();" href="#">Ocultar / mostrar productos</a>
             </div>
             <!--
-                La tabla de usuarios aparece ordenada:
-                    Primero por administradores sobre usuarios base
-                    Segundo por fecha de registro (ascendente)
+                Tabla "usuario"
+                Ordenada:
+                    - Primero por administradores sobre usuarios base
+                    - Segundo por fecha de registro (ascendente)
             -->
             <div class="contenedor_tabla_usuarios">
                 <table id="tabla_usuarios" class="tabla_usuarios">
@@ -151,6 +141,7 @@
                 <?php } ?>
                 </table>
             </div>
+            <!-- Tabla "producto" -->
             <div class="contenedor_tabla_productos">
                 <table id="tabla_productos" class="tabla_productos">
                     <tr>
@@ -174,6 +165,7 @@
                 </table>
             </div>
         <?php } else { ?>
+            <!-- Si el usuario no es un administrador o no se encuentra loggeado -->
             <div class="cuerpo_perfil_no_log">
                 <h2 class="titulo_no_loggeado">Solamente los administradores tienen permiso para acceder a esta página.</h2>
                 <a href="landpage.php" class="btn_perfil">Página principal</a>
@@ -182,7 +174,7 @@
         <?php } ?>
     </div>
     
-    <!-- Pie de página -->
+    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="pie_pagina">
             <div class="row">

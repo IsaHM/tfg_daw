@@ -1,47 +1,11 @@
 /* --- GENERAL --- */
 
-/* margin: top dcha bot izq*/
 * {
     margin: 0;
     outline: none;
     scrollbar-color: #b4aee8 #e0e0e0;
     scrollbar-gutter: stable;
     font-family: open_sans_regular;
-}
-
-.portada h1 {
-    color: #37e2d5;
-    font-family: norwester;
-    width: 100%;
-    text-align: center;
-    padding-top: 17%;
-    font-size: 9em;
-}
-
-.portada h2 {
-    color: #d23a99;
-    font-family: open_sans_semi_bold;
-    width: 100%;
-    text-align: center;
-    padding-top: 3.5%;
-    font-size: 2.2em;
-}
-
-@media (max-width: 480px) {  
-    .portada h1 {
-        width: 90%;
-        margin: auto;
-        text-align: center;
-        padding-top: 28%;
-        font-size: 5em;
-    }
-    
-    .portada h2 {
-        width: 90%;
-        margin: auto;
-        padding-top: 5%;
-        font-size: 1.2em;
-    }
 }
 
 /* header */
@@ -189,13 +153,31 @@ footer a:hover {
 
 /* --- LANDPAGE --- */
 
-/* img de portada y texto interior */
+/* portada y texto interior */
 .portada {
     margin-top: 3%;
     max-width: 100%;
     height: 100%;
     background: url(/imgs/wp_landpage.jpg);
     background-size: cover;
+}
+
+.portada h1 {
+    color: #37e2d5;
+    font-family: norwester;
+    width: 100%;
+    text-align: center;
+    padding-top: 17%;
+    font-size: 9em;
+}
+
+.portada h2 {
+    color: #d23a99;
+    font-family: open_sans_semi_bold;
+    width: 100%;
+    text-align: center;
+    padding-top: 3.5%;
+    font-size: 2.2em;
 }
 
 .portada h2 span {
@@ -208,13 +190,26 @@ footer a:hover {
     }
 }
 
-@media (max-width: 480px) {  
+@media (max-width: 480px) {
     .portada {
-        margin-top: 4%;
+        margin-top: 3%;
+        min-height: 75%;
+    }
+
+    .portada h1 {
+        margin-top: 1.2em;
+        font-size: 4em;
+    }
+
+    .portada h2 {
+        width: 90%;
+        margin: auto;
+        padding-top: 5%;
+        font-size: 1.1em;
     }
 }
 
-/* cuerpo del landpage */
+/* cuerpo de la página principal */
 .cuerpo_fondo {
     background-color: #f2f2f2;
 }
@@ -371,7 +366,8 @@ footer a:hover {
     }
 }
 
-/* Botones de registro o tienda */
+/* Botón de registro (no conectado) o tienda (conectado) */
+
 .aviso_registro {
     text-align: center;
     margin: 3em 0 3em 0;
@@ -412,7 +408,8 @@ footer a:hover {
     }
 }
 
-/* contacto */
+/* formulario de contacto */
+
 .cuerpo_contacto {
     margin: 0 5% 0 5%;
     padding-top: 5%;
@@ -580,8 +577,6 @@ footer a:hover {
 
 /* --- PERFIL --- */
 
-/* Usuario conectado */
-
 .perfil_cuerpo {
     background: url(/imgs/wp_perfil.jpg);
     background-size: cover;
@@ -618,7 +613,7 @@ footer a:hover {
 }
 
 .perfil_submit {
-    padding: 0.2em 1.5em 0.2em 1.5em; /* top dcha bot izq*/
+    padding: 0.2em 1.5em 0.2em 1.5em;
     margin-left: 0.8em;
     text-decoration: none;
     color: #0a475c;
@@ -700,7 +695,82 @@ footer a:hover {
     }
 }
 
-/* Formularios login / registro */
+/* Usuario no conectado */
+
+.cuerpo_perfil_no_log {
+    height: 32em;
+}
+
+.titulo_no_loggeado {
+    padding-top: 6em;
+    font-family: open_sans_medium;
+    color:#FBCB0A;
+    font-size: 2.2em;
+    margin-bottom: 2em;
+}
+
+.btn_perfil {
+    padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
+    margin: 0 2.5em 0 2.5em;
+    text-decoration: none;
+    border: 2px solid #78788c;
+    color: white;
+    background-color: #0a475c;
+    transition: all .3s;
+}
+
+.btn_perfil:hover {
+    opacity: 1;
+    background: #FBCB0A;
+    border: 2px solid #FBCB0A;
+    color: #0a475c;
+}
+
+.btn_perfil:active {
+    opacity: 0.8;
+    background: #0a475c;
+    border: 2px solid #0a475c;
+    color: white;
+}
+
+@media (max-width: 1024px) {    
+    .cuerpo_perfil_no_log {
+        height: 34em;
+    }
+    
+    .titulo_no_loggeado {
+        padding-top: 10em;
+        font-size: 1.6em;
+    }
+    
+    .btn_perfil {
+        padding: 0.5em 1.2em 0.5em 1.2em;
+        margin: 0 1.8em 0 1.8em;
+    }
+}
+
+@media (max-width: 480px) {    
+    .cuerpo_perfil_no_log {
+        height: 28em;
+    }
+    
+    .titulo_no_loggeado {
+        width: 85%;
+        margin: auto;
+        padding-top: 8em;
+        font-size: 1.3em;
+        margin-bottom: 1em;
+    }
+    
+    .btn_perfil {
+        display: block;
+        margin: auto;
+        margin-top: 1em;
+        width: 50%;
+    }
+}
+
+/* --- LOGIN / REGISTRO --- */
 
 .cuerpo_registro_login {
     margin: auto;
@@ -788,82 +858,8 @@ footer a:hover {
     }
 }
 
-/* Usuario no conectado */
+/* --- PANEL DE ADMINISTRADOR --- */
 
-.cuerpo_perfil_no_log {
-    height: 32em;
-}
-
-.titulo_no_loggeado {
-    padding-top: 6em;
-    font-family: open_sans_medium;
-    color:#FBCB0A;
-    font-size: 2.2em;
-    margin-bottom: 2em;
-}
-
-.btn_perfil {
-    padding: 0.5em 1.5em 0.5em 1.5em; /* top dcha bot izq*/
-    margin: 0 2.5em 0 2.5em;
-    text-decoration: none;
-    border: 2px solid #78788c;
-    color: white;
-    background-color: #0a475c;
-    transition: all .3s;
-}
-
-.btn_perfil:hover {
-    opacity: 1;
-    background: #FBCB0A;
-    border: 2px solid #FBCB0A;
-    color: #0a475c;
-}
-
-.btn_perfil:active {
-    opacity: 0.8;
-    background: #0a475c;
-    border: 2px solid #0a475c;
-    color: white;
-}
-
-@media (max-width: 1024px) {    
-    .cuerpo_perfil_no_log {
-        height: 34em;
-    }
-    
-    .titulo_no_loggeado {
-        padding-top: 10em;
-        font-size: 1.6em;
-    }
-    
-    .btn_perfil {
-        padding: 0.5em 1.2em 0.5em 1.2em;
-        margin: 0 1.8em 0 1.8em;
-    }
-}
-
-@media (max-width: 480px) {    
-    .cuerpo_perfil_no_log {
-        height: 28em;
-    }
-    
-    .titulo_no_loggeado {
-        width: 85%;
-        margin: auto;
-        padding-top: 8em;
-        font-size: 1.3em;
-        margin-bottom: 1em;
-    }
-    
-    .btn_perfil {
-        display: block;
-        margin: auto;
-        margin-top: 1em;
-        width: 50%;
-    }
-}
-
-/* PANEL DE ADMINISTRADOR */
 .panel_admin_cuerpo {
     background: url(/imgs/wp_admin.jpg);
     background-size: cover;
@@ -1017,7 +1013,8 @@ footer a:hover {
     }
 }
 
-/* Tabla usuarios panel admin */
+/* Tabla usuarios del panel de administración */
+
 .botones_mostrar_ocultar {
     display: inline-block;
 }
@@ -1107,7 +1104,8 @@ footer a:hover {
     }
 }
   
-/* Tabla productos panel admin */
+/* Tabla productos del panel de administración */
+
 .contenedor_tabla_productos {
     margin: auto;
     margin-top: 2em;
@@ -1164,7 +1162,8 @@ footer a:hover {
     }
 }
 
-/* Pagina de error */
+/* --- PÁGINA DE ERROR --- */
+
 .contenedor_error {
     margin-top: 3em;
     align-items: center;

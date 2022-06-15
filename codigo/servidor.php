@@ -4,13 +4,14 @@
     $conector = new ConectorBD();
 
 switch ($option) {
-    //USUARIOS
+/* --- USUARIOS --- */
+    //Recibe información sobre los campos de la tabla usuario necesarios y conecta con la función comprobarEmail
     case "registro":
         $email = $_POST['email'];
         $nombre = $_POST['nombre'];
         $pass = $_POST['pass'];
 
-        //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+        //Si algún campo está vacío, lleva a la página de fallo
         if(!empty($_POST['nombre']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
             /*
                 Comprueba si el email existe previamente
@@ -33,11 +34,12 @@ switch ($option) {
             exit();
         }        
         break;
+    //Recibe información sobre un usuario y conecta con la función consultarUsuario
     case "inicio_sesion":
         $nombre = $_POST['nombre'];
         $pass = $_POST['pass'];
         
-        //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+        //Si algún campo está vacío, lleva a la página de fallo
         if(!empty($_POST['nombre']) && !empty($_POST['pass'])) {
             $conector->consultarUsuario($nombre, $pass);     
         } else {
@@ -45,6 +47,7 @@ switch ($option) {
             exit();
         }    
         break;
+    //Recibe información sobre un usuario existente y un nuevo email y conecta con la función cambiarMail
     case "cambiar_mail":
         session_start();
         $nombre = $_POST['nombre'];
@@ -52,7 +55,7 @@ switch ($option) {
         $mail_nuevo = $_POST['mail_nuevo'];
         $pass = $_POST['pass'];
         
-        //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+        //Si algún campo está vacío, lleva a la página de fallo
         if(!empty($_POST['nombre']) && !empty($_POST['mail_antiguo']) && !empty($_POST['mail_nuevo']) && !empty($_POST['pass'])) {
             $conector->cambiarMail($nombre, $mail_antiguo, $mail_nuevo, $pass);     
         } else {
@@ -60,13 +63,14 @@ switch ($option) {
             exit();
         }    
         break;
+    //Recibe información sobre un usuario existente, una nueva contraseña y conecta con la función cambiarPass
     case "cambiar_pass":
             session_start();
             $nombre = $_POST['nombre'];
             $pass_antigua = $_POST['pass_antigua'];
             $pass_nueva = $_POST['pass_nueva'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            //Si algún campo está vacío, lleva a la página de fallo
             if(!empty($_POST['nombre']) && !empty($_POST['pass_antigua']) && !empty($_POST['pass_nueva'])) {
                 $conector->cambiarPass($nombre, $pass_antigua, $pass_nueva);     
             } else {
@@ -74,6 +78,7 @@ switch ($option) {
                 exit();
             }    
             break;
+    //Recibe información sobre un usuario existente y conecta con borrarCuenta
     case "borrar_cuenta":
             session_start();
             $nombre = $_POST['nombre'];
@@ -81,7 +86,7 @@ switch ($option) {
             $pass_uno = $_POST['pass_uno'];
             $pass_dos = $_POST['pass_dos'];
             
-            //Si algún campo está vacío, lleva a la página de fallo. Esto no debería suceder por el limitador del propio formulario
+            //Si algún campo está vacío, lleva a la página de fallo
             if(!empty($_POST['nombre']) && !empty($_POST['mail']) && !empty($_POST['pass_uno']) && !empty($_POST['pass_dos'])) {
                 if($pass_uno == $pass_dos) {
                     $conector->borrarCuenta($nombre, $email, $pass_uno);   
@@ -97,7 +102,9 @@ switch ($option) {
                 exit();
             }    
             break;
-        //PRODUCTOS
+
+/* --- PRODUCTOS --- */
+        //Recibe la información necesaria de una fila ya existente en "productos" y conecta con insertarProducto
         case "meter_en_carrito":
             session_start();
             $id_sesion = session_id();
@@ -109,6 +116,7 @@ switch ($option) {
             }
 
             break;
+        //Recibe la información necesaria de una fila ya existente en "productos" y conecta con borrarProductoCarrito
         case "borrar_del_carrito":
             session_start();
             $id_sesion = session_id();
@@ -118,7 +126,9 @@ switch ($option) {
                 $conector->borrarProductoCarrito($id_producto);        
             }
             break;
-        //ADMIN
+
+/* --- PANEL DE ADMINISTRADOR --- */
+        //Recibe el email de un usuario existente y conecta con darAdmin
         case "admin_dar_admin":
             session_start();
             $email = $_POST['email'];
@@ -127,6 +137,7 @@ switch ($option) {
                 $conector->darAdmin($email);        
             }
             break;
+        //Recibe el email de un usuario existente y conecta con quitarAdmin
         case "admin_quitar_admin":
             session_start();
             $email = $_POST['email'];
@@ -135,6 +146,7 @@ switch ($option) {
                 $conector->quitarAdmin($email);        
             }
             break;
+        //Recibe el email de un usuario existente y conecta con adminBorrarCuenta
         case "admin_borrar_usuario":
             session_start();
             $email = $_POST['email'];
@@ -143,6 +155,10 @@ switch ($option) {
                 $conector->adminBorrarCuenta($email);        
             }
             break;
+        /*
+            Recibe los datos de un producto y conecta con nuevoProducto
+            Los apartados "url" y "alt" son opcionales
+        */
         case "admin_nuevo_producto":
             session_start();
             $producto_nombre = $_POST['producto_nombre'];
@@ -152,10 +168,11 @@ switch ($option) {
             $url = $_POST['producto_url_img'];
             $alt = $_POST['producto_url_alt'];
                 
-            if(!empty($_POST['producto_nombre']) && !empty($_POST['producto_descripcion']) && !empty($_POST['producto_precio']) && !empty($_POST['producto_categoria']) && !empty($_POST['producto_url_img']) && !empty($_POST['producto_url_alt'])) {
+            if(!empty($_POST['producto_nombre']) && !empty($_POST['producto_descripcion']) && !empty($_POST['producto_precio']) && !empty($_POST['producto_categoria'])) {
                 $conector->nuevoProducto($producto_nombre, $descripcion, $precio, $categoria, $url, $alt);        
             }     
             break;
+        //Recibe el nombre de un producto y conecta con eliminarProducto
         case "admin_eliminar_producto":
             session_start();
             $producto_nombre = $_POST['producto_nombre'];

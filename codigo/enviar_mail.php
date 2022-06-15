@@ -1,3 +1,7 @@
+<!--
+    La web debe estar desplegada en un servidor para que este código envíe el mensaje al email aportado
+-->
+
 <?php
     $direccion_email = "isabel.heredia2@educa.madrid.org";
     
