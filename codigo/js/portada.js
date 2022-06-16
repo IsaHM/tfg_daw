@@ -1,6 +1,6 @@
 /*
     Lee la longitud del texto a introducir (por ej. "programadores") y la suma uno a uno.
-    Al llegar al final de la sumar, invierte el efecto para restar uno por uno los valores de la misma longitud.
+    Al llegar al final del largo del texto, revierte el efecto para restar uno por uno los valores de la misma longitud.
     Al restar todos los valores, cambia el valor del texto y repite el proceso de forma cíclica.
 */
 

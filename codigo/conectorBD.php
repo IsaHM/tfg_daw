@@ -121,7 +121,7 @@ class ConectorBD {
         mysqli_close($conector);
     }
 
-    //Altera el contenido de la columna "email"
+    //Altera el contenido de la columna "pass"
     public function cambiarPass($nombre, $pass_antigua, $pass_nueva) {
         $conector = mysqli_connect($this->servername, $this->user, $this->pass, $this->database);
         $sql = "SELECT * FROM usuario where pass = '$pass_antigua' AND nombre = '$nombre'";

@@ -83,7 +83,7 @@
 
         if (isset($_SESSION['usuario']) || isset($_SESSION['admin'])){
     ?>
-    <!-- Recibe los datos de cada fila en la base de datos "producto" y genera una ficha por cada una -->
+    <!-- Recibe los datos de cada fila en la tabla "producto" y genera una ficha por cada una -->
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
             <?php foreach($lista_productos as $row) { ?>
