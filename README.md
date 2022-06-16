@@ -7,4 +7,4 @@ Curso 2021/2022
 Definición:
 Desarrollo de una página web de iniciación al diseño gráfico enfocada en diseño UI/UX.
 
-<a class="Acceso al proyecto" href="codigo/landpage.php"></a>
+<a class="Acceso al proyecto" href="codigo/landpage.php">Acceso a la página</a>
